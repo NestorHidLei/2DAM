@@ -1,0 +1,11 @@
+package resources;
+
+public class Profesor {
+
+	//Atributos
+	private int IdProfesor;
+	private String NIF;
+	private String Nombre;
+	private String Especialidad;
+	private String Teléfono;
+}

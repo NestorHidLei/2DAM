@@ -1,0 +1,42 @@
+package actividad106.ejercicio01;
+
+import java.io.IOException;
+import java.io.OutputStream;
+
+import java.util.Scanner;
+
+public class Maestro {
+
+	public static void main(String[] args) {
+
+		Scanner sc = new Scanner(System.in);
+		ProcessBuilder proceso;
+		try {
+			proceso = new ProcessBuilder("java", "-cp", "./src/Actividad106/ejercicio01", "Esclavo");
+			Process procesoEsclavo = proceso.start();
+			OutputStream output = procesoEsclavo.getOutputStream();
+
+			String linea = null;
+
+			System.out.println("Escribe alg (no pongas nada si quieres salir)");
+
+			while (true) {
+				linea = sc.nextLine();
+
+				if (linea.isEmpty()) {
+					break;
+				}
+
+				output.write((linea + "\n").getBytes());
+			}
+
+			output.close();
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		sc.close();
+	}
+}

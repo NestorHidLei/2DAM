@@ -1,0 +1,47 @@
+package actividad106.ejercicio01;
+
+import java.io.IOException;
+import java.io.OutputStream;
+import java.util.Scanner;
+
+public class Maestro {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        ProcessBuilder proceso;
+        try {
+            // Cambiar la ruta para apuntar a la carpeta con los archivos .class
+            proceso = new ProcessBuilder("java", "-cp", "./bin/Actividad106/ejercicio01", "Esclavo");
+            Process procesoEsclavo = proceso.start();
+            OutputStream output = procesoEsclavo.getOutputStream();
+
+            String linea;
+
+            System.out.println("Escribe algo (no pongas nada si quieres salir)");
+
+            // Bucle que envía líneas al proceso esclavo hasta que se introduce una línea vacía
+            while (true) {
+                linea = sc.nextLine();
+
+                if (linea.isEmpty()) {
+                    break; // Salir del bucle si no se escribe nada
+                }
+
+                output.write((linea + "\n").getBytes()); // Escribir la línea
+                output.flush(); // Asegurar que los datos se envíen inmediatamente
+            }
+
+            // Cerrar el OutputStream después de enviar todas las líneas
+            output.close();
+
+            // Esperar a que el proceso esclavo termine correctamente
+            procesoEsclavo.waitFor();
+
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        } finally {
+            sc.close(); // Cerrar el Scanner
+        }
+    }
+}

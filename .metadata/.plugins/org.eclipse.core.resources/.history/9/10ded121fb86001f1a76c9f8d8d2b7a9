@@ -1,0 +1,82 @@
+package mainApp;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
+import conexion.Conexion;
+import resources.Asignatura;
+import resources.Profesor;
+
+public class MainApp {
+
+    // Corrected SQL queries
+    private static final String INSERTAR_PROFESORES = "INSERT INTO Profesores(NIF, Nombre, Especialidad, Telefono) VALUES (?,?,?,?)";
+    private static final String INSERTAR_ASIGNATURAS = "INSERT INTO Asignatura(CodAsignatura, Nombre) VALUES(?,?)";
+
+    public static void main(String[] args) {
+        String linea = "";
+        List<Profesor> listaProfesores = new ArrayList<>();
+        List<Asignatura> listaAsignaturas = new ArrayList<>();
+
+        try (Connection connect = Conexion.conectar()) {
+            // Reading the CSV file
+            try (BufferedReader br = new BufferedReader(new FileReader("src/main/java/Fichero.csv"))) {
+                while ((linea = br.readLine()) != null) {
+                    if (linea.startsWith("P")) { // Line belongs to Profesor
+                        String[] campos = linea.split(";");
+                        String NIF = campos[1];
+                        String Nombre = campos[2];
+                        String Especialidad = campos[3];
+                        String Telefono = campos[4];
+                        Profesor profesor = new Profesor(NIF, Nombre, Especialidad, Telefono);
+                        listaProfesores.add(profesor);
+                    } else if (linea.startsWith("A")) { // Line belongs to Asignatura
+                        String[] campos = linea.split(";");
+                        String codAsignatura = campos[1];
+                        String Nombre = campos[2];
+                        Asignatura asignatura = new Asignatura(codAsignatura, Nombre);
+                        listaAsignaturas.add(asignatura);
+                    }
+                }
+            } catch (Exception e) {
+                System.err.println("Error al leer el archivo: " + e.getMessage());
+            }
+
+            // Inserting into the database
+            try {
+                connect.setAutoCommit(false);
+
+                // Inserting Profesores
+                PreparedStatement st = connect.prepareStatement(INSERTAR_PROFESORES, PreparedStatement.RETURN_GENERATED_KEYS);
+                for (Profesor profesor : listaProfesores) {
+                    st.setString(1, profesor.getNIF());
+                    st.setString(2, profesor.getNombre());
+                    st.setString(3, profesor.getEspecialidad());
+                    st.setString(4, profesor.getTeléfono()); // Fixed index
+                    st.executeUpdate();
+                }
+
+                // Inserting Asignaturas
+                PreparedStatement st2 = connect.prepareStatement(INSERTAR_ASIGNATURAS, PreparedStatement.RETURN_GENERATED_KEYS);
+                for (Asignatura asignatura : listaAsignaturas) {
+                    st2.setString(1, asignatura.getCodAsignatura());
+                    st2.setString(2, asignatura.getNombre());
+                    st2.executeUpdate();
+                }
+
+                connect.commit(); // Commit the transaction if everything is successful
+
+            } catch (Exception e) {
+                System.err.println("Error during database operation: " + e.getMessage());
+                connect.rollback(); // Rollback if there's an error
+            }
+
+        } catch (Exception e) {
+            System.err.println("Error en la conexión: " + e.getMessage());
+        }
+    }
+}

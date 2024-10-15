@@ -1,0 +1,42 @@
+package resources;
+
+public class Asignatura {
+	
+	//Atributos
+	private int CodAsignatura;
+	private String Nombre;
+	private int IdProfesor;
+	
+	/**
+	 * Constructor de Asignatura
+	 */
+	public Asignatura() {
+	}
+
+	/**
+	 * Constructor de Asignaturas
+	 * @param codAsignatura - codigo de la asignatura 
+	 * @param nombre - nombnre de la asignatura
+	 * @param idProfesor - id del profesor
+	 */
+	public Asignatura(int codAsignatura, String nombre, int idProfesor) {
+		this.CodAsignatura = codAsignatura;
+		this.Nombre = nombre;
+		this.IdProfesor = idProfesor;
+	}
+
+	public int getCodAsignatura() {
+		return CodAsignatura;
+	}
+
+	public String getNombre() {
+		return Nombre;
+	}
+
+	public int getIdProfesor() {
+		return IdProfesor;
+	}
+	
+	
+
+}

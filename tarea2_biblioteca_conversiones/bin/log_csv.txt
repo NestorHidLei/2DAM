@@ -1,0 +1,5 @@
+2024-09-26 13:55:06 - CSV a Binario: src/Archivo.csv -> src/Archivo.dat
+2024-09-26 13:55:06 - Ordenar CSV: src/Archivo.csv -> src/Archivo_ord.csv
+2024-09-26 13:55:06 - Ordenar Binario: src/Archivo.dat -> src/Archivo_ord.dat
+2024-09-26 13:55:06 - Binario a CSV: src/Archivo.dat -> src/Archivo.csv
+2024-09-26 13:55:06 - Binario a CSV Ordenado: src/Archivo.dat -> src/Archivo_ord.csv

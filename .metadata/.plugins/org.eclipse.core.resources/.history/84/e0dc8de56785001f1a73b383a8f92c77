@@ -1,0 +1,20 @@
+package resources;
+
+public class Clientes {
+	
+	private String nombre;
+	private String apellidos;
+	private int edad;
+	private String provicia;
+	
+	
+	public Clientes(String nombre, String apellidos, int edad, String provicia) {
+		this.nombre = nombre;
+		this.apellidos = apellidos;
+		this.edad = edad;
+		this.provicia = provicia;
+	}
+	
+	
+
+}

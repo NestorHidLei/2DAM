@@ -1,0 +1,118 @@
+package swing;
+
+import java.awt.EventQueue;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.JTextField;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import com.toedter.calendar.JDateChooser;
+import javax.swing.JComboBox;
+
+public class altaClientes extends JFrame {
+
+	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
+	private JTextField textField;
+	private JTextField textField_1;
+
+	/**
+	 * Create the frame.
+	 */
+	public altaClientes() {
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+
+		setContentPane(contentPane);
+		
+		JLabel lblNuevoCliente = new JLabel("Nuevo Cliente");
+		lblNuevoCliente.setFont(new Font("Palatino Linotype", Font.BOLD, 27));
+		
+		JLabel lblNewLabel = new JLabel("Nombre: ");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		
+		JLabel lblApellidos = new JLabel("Apellidos: ");
+		lblApellidos.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		
+		JLabel lblFechaDeNacimiento = new JLabel("Fecha de nacimiento: ");
+		lblFechaDeNacimiento.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		
+		JLabel lblProvincia = new JLabel("Provincia: ");
+		lblProvincia.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		
+		textField = new JTextField();
+		textField.setColumns(10);
+		
+		textField_1 = new JTextField();
+		textField_1.setColumns(10);
+		
+		JDateChooser dateChooser = new JDateChooser();
+		
+		// Crear un JComboBox con las provincias de España
+		String[] provincias = {
+			"Andalucía", "Aragón", "Asturias", "Islas Baleares", "Canarias",
+			"Cantabria", "Castilla-La Mancha", "Castilla y León", "Cataluña",
+			"Extremadura", "Galicia", "Madrid", "Murcia", "Navarra", 
+			"La Rioja", "País Vasco", "Valencia", "Ceuta", "Melilla"
+		};
+		JComboBox<String> comboBoxProvincias = new JComboBox<>(provincias);
+
+		GroupLayout gl_contentPane = new GroupLayout(contentPane);
+		gl_contentPane.setHorizontalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(lblNewLabel)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addGap(110)
+									.addComponent(lblNuevoCliente))
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addGap(4)
+									.addComponent(textField, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
+									.addGap(18)
+									.addComponent(lblFechaDeNacimiento)
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(dateChooser, GroupLayout.PREFERRED_SIZE, 167, GroupLayout.PREFERRED_SIZE)))
+							.addContainerGap(19, Short.MAX_VALUE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(lblApellidos)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(textField_1, GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
+							.addGap(18)
+							.addComponent(lblProvincia)
+							.addGap(18)
+							.addComponent(comboBoxProvincias, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
+							.addGap(268))))
+		);
+		gl_contentPane.setVerticalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addComponent(lblNuevoCliente)
+					.addGap(18)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(dateChooser, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+								.addComponent(lblNewLabel)
+								.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblFechaDeNacimiento, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE))
+							.addGap(18)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+								.addComponent(lblApellidos, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE)
+								.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblProvincia, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE)
+								.addComponent(comboBoxProvincias, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
+					.addContainerGap(90, Short.MAX_VALUE))
+		);
+		contentPane.setLayout(gl_contentPane);
+	}
+}

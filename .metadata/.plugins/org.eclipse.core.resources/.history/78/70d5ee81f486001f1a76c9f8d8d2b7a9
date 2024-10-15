@@ -1,0 +1,55 @@
+package resources;
+
+public class Profesor {
+
+	//Atributos
+	private int IdProfesor;
+	private String NIF;
+	private String Nombre;
+	private String Especialidad;
+	private String Teléfono;
+	
+	/**
+	 * Constructor vacio del profesor
+	 */
+	public Profesor() {
+	}
+
+	/**
+	 * Constructor de un profesor
+	 * @param idProfesor - Id del profesor
+	 * @param nIF - nif del profesor
+	 * @param nombre - nombre del profesor
+	 * @param especialidad - Especialidades del profesor
+	 * @param teléfono - telefono del profesor
+	 */
+	public Profesor(int idProfesor, String nIF, String nombre, String especialidad, String teléfono) {
+		this.IdProfesor = idProfesor;
+		this.NIF = nIF;
+		this.Nombre = nombre;
+		this.Especialidad = especialidad;
+		this.Teléfono = teléfono;
+	}
+
+	public int getIdProfesor() {
+		return IdProfesor;
+	}
+
+	public String getNIF() {
+		return NIF;
+	}
+
+	public String getNombre() {
+		return Nombre;
+	}
+
+	public String getEspecialidad() {
+		return Especialidad;
+	}
+
+	public String getTeléfono() {
+		return Teléfono;
+	}
+	
+	
+}

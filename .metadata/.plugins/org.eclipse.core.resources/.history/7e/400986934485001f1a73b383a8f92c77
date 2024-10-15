@@ -1,0 +1,31 @@
+package mainApp;
+
+import java.awt.EventQueue;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+
+import javax.swing.JFrame;
+
+import jframeApp.SwingApp;
+
+public class MainApp {
+
+	private static final String SELECT_PELICULAS = "SELECT * FROM film;";
+
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					SwingApp frame = new SwingApp();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+
+	}
+}

@@ -1,0 +1,23 @@
+package actividad106.ejercicio01;
+
+import java.io.IOException;
+import java.util.Scanner;
+
+public class Maestro {
+	
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(SYstem.in);
+		ProcessBuilder proceso;
+		try{
+			proceso = new ProcessBuilder("java", "-cp" , "src/", "Esclavo");
+			Process procesoEsclavo = proceso.start();
+			
+			while()
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}

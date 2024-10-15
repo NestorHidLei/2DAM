@@ -1,0 +1,29 @@
+package actividad106.ejercicio01;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.Scanner;
+
+public class Esclavo {
+	
+	public static void main(String[] args) {
+
+		Scanner sc = new Scanner(System.in);
+		ProcessBuilder proceso;
+		try {
+			proceso = new ProcessBuilder("java", "-cp", "./src/Actividad106/ejercicio01", "Maestro");
+			Process procesoMaestro = proceso.start();
+			InputStream input = procesoMaestro.getInputStream();
+
+			input.read();
+			
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		sc.close();
+	}
+}

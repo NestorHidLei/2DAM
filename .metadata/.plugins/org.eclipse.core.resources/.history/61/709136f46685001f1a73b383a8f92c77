@@ -1,0 +1,9 @@
+package resources;
+
+public class Clientes {
+	
+	private String nombre;
+	private String apellidos;
+	private 
+
+}

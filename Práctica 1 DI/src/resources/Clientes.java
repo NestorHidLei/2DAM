@@ -58,9 +58,14 @@ public class Clientes {
 
 	@Override
 	public String toString() {
-	    return String.format("%s %s, Edad: %d, Provincia: %s", nombre, apellidos, edad, provicia);
+	    return String.format("💻 Cliente: %s %s  Edad: %d años  Provincia: %s", 
+	                         nombre, apellidos, edad, provicia);
 	}
-	
+
+
+
+
+
 	
 
 }

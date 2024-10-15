@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import resources.Clientes;
+import resources.Productos;
 
 import javax.swing.DefaultListModel;
 
@@ -68,7 +69,7 @@ public class swingApp extends JFrame {
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							bajaClientes frame = new bajaClientes();
+							bajaClientes frame = new bajaClientes(swingApp.this);
 							frame.setVisible(true);
 						} catch (Exception e) {
 							e.printStackTrace();
@@ -125,16 +126,33 @@ public class swingApp extends JFrame {
 		contentPane.setLayout(null);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 16, 481, 143);
+		scrollPane.setBounds(10, 16, 481, 360);
 
 		model = new DefaultListModel<>();
 	    model.clear();
+	    listaCliente.add(new Clientes("Néstor", "Hidalgo Leiva", 19, "Málaga"));
+	    listaCliente.add(new Clientes("María", "Fernández García", 25, "Sevilla"));
+	    listaCliente.add(new Clientes("Juan", "Pérez López", 30, "Córdoba"));
+	    listaCliente.add(new Clientes("Laura", "Sánchez Rodríguez", 28, "Granada"));
+	    listaCliente.add(new Clientes("Carlos", "Martínez Hernández", 35, "Jaén"));
+	    listaCliente.add(new Clientes("Ana", "González Morales", 22, "Almería"));
+	    listaCliente.add(new Clientes("Pedro", "Ramírez Ruiz", 27, "Huelva"));
+	    listaCliente.add(new Clientes("Lucía", "Díaz Torres", 31, "Cádiz"));
+	    listaCliente.add(new Clientes("Sofía", "Romero Gil", 24, "Málaga"));
+	    listaCliente.add(new Clientes("Javier", "Muñoz Ortega", 29, "Almería"));
+	    listaCliente.add(new Clientes("Cristina", "López Fernández", 26, "Córdoba"));
+
+	    
 		for (int i = 0; i < listaCliente.size(); i++) {
 			model.addElement(listaCliente.get(i)); 
 		}
 		listClientes = new JList(model);
 		scrollPane.setViewportView(listClientes);
 		contentPane.add(scrollPane);
+	}
+	
+	public DefaultListModel<Clientes> getModelClientes() {
+		return model;
 	}
 	
 	public void actualizarListaClientes() {
@@ -144,12 +162,7 @@ public class swingApp extends JFrame {
         }
     }
 	
-	public void updateListModel() {
-        model.clear(); // Limpiar el modelo antes de actualizar
-        for (Clientes cliente : listaCliente) {
-            model.addElement(cliente);
-        }
-    }
+	
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {

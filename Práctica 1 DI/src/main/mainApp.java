@@ -1,8 +1,8 @@
 package main;
 
 import java.awt.EventQueue;
-import java.util.ArrayList;
-import java.util.List;
+
+import com.mysql.cj.x.protobuf.MysqlxDatatypes.Scalar.String;
 
 import resources.Clientes;
 import swing.swingApp;

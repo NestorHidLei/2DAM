@@ -2,5 +2,31 @@
 <workingSetManager>
 <workingSet editPageId="org.eclipse.jdt.internal.ui.DynamicSourcesWorkingSet" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1726563262605_0" label="Java Main Sources" name="Java Main Sources"/>
 <workingSet editPageId="org.eclipse.jdt.internal.ui.DynamicSourcesWorkingSet" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1726563262629_1" label="Java Test Sources" name="Java Test Sources"/>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1729530607167_3" label="Acceso A Datos" name="Acceso A Datos">
+<item elementID="=Tarea 5. Procesamiento por lotes \(Batch Processing)" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=Tarea 1. Consulta con JDBC" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=Tarea 2. Creación de tablas \(DDL) con JDBC \(opcional)" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=Tarea 6. Llamadas a Procedimientos" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=Tarea 3. Aplicación Swing y JDBC \(DML, Resultset, Statement)" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=Tarea 4. Transacciones desde fichero de texto. Clave autoincremental" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+</workingSet>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1729530715536_4" label="Desarrollo de Interfaces" name="Desarrollo de Interfaces">
+<item elementID="=Práctica 1 DI" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=Práctica 2 DI" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+</workingSet>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1729530834795_6" label="Programación de Servicios y Procesos" name="Programación de Servicios y Procesos">
+<item elementID="=Actividad 1.06 – Comunicación entre procesos" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=Actividad 1.07-Utilización de todos los núcleos del equipo" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+</workingSet>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1729530960342_7" label="Seguridad en Programación (HLC)" name="Seguridad en Programación (HLC)">
+<item elementID="=Actividad 2.04 - Cifrado Simétrico de mensajes con RSA" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=Actividad 2.02 - Creación de resúmenes \(hash)" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=Actividad203 - Cifrado Simétrico de mensajes con AES" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+</workingSet>
 <workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1726563263233_2" label="Window Working Set" name="Aggregate for window 1726563263233"/>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1729530723789_5" label="Multiple Working Sets" name="Aggregate:Acceso A Datos:Desarrollo de Interfaces:">
+<workingSet IMemento.internal.id="Acceso A Datos"/>
+<workingSet IMemento.internal.id="Desarrollo de Interfaces"/>
+</workingSet>
+<mruList name="Acceso A Datos"/>
 </workingSetManager>

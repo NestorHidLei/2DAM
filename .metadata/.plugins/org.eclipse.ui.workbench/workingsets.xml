@@ -34,8 +34,12 @@
 <workingSet IMemento.internal.id="Java Main Sources"/>
 <workingSet IMemento.internal.id="Java Test Sources"/>
 </workingSet>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1729584737261_10" label="Multiple Working Sets" name="Aggregate:Desarrollo de Interfaces:Seguridad en Programación (HLC):">
+<workingSet IMemento.internal.id="Desarrollo de Interfaces"/>
+<workingSet IMemento.internal.id="Seguridad en Programación (HLC)"/>
+</workingSet>
+<mruList name="Desarrollo de Interfaces"/>
 <mruList name="Seguridad en Programación (HLC)"/>
 <mruList name="Programación de Servicios y Procesos"/>
-<mruList name="Desarrollo de Interfaces"/>
 <mruList name="Acceso a Datos"/>
 </workingSetManager>

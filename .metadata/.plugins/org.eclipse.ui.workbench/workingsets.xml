@@ -12,9 +12,9 @@
 <item elementID="=Actividad103-PSP" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 </workingSet>
 <workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1729530960342_7" label="Seguridad en Programación (HLC)" name="Seguridad en Programación (HLC)">
-<item elementID="=Actividad 2.04 - Cifrado Simétrico de mensajes con RSA" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 <item elementID="=Actividad 2.02 - Creación de resúmenes \(hash)" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 <item elementID="=Actividad203 - Cifrado Simétrico de mensajes con AES" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=Actividad 2.04 - Cifrado Simétrico de mensajes con RSA 1" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 </workingSet>
 <workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1729579415754_9" label="Acceso a Datos" name="Acceso a Datos">
 <item elementID="=Tarea 5. Procesamiento por lotes \(Batch Processing)" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>

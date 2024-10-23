@@ -56,7 +56,7 @@ public class DescifraRSAApp {
             String mensajeEnClaro = new String(mensajeDescifrado, "UTF-8");
 
             // Imprimir el mensaje en claro
-            System.out.println("Mensaje en claro: " + mensajeEnClaro);
+            System.out.println("Mensaje descifrado: " + mensajeEnClaro);
 
         } catch (IOException e) {
             System.out.println("Error al leer el archivo: " + e.getMessage());

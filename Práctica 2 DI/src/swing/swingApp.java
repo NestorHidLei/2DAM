@@ -10,7 +10,7 @@ public class swingApp extends JFrame {
     public swingApp() {
         // Configuración de la ventana
         setTitle("Gestión Clientes");
-        setSize(600, 500);
+        setSize(610, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null); // Centra la ventana
         getContentPane().setLayout(new BorderLayout());
@@ -18,11 +18,13 @@ public class swingApp extends JFrame {
         // Panel superior con el logo y el nombre de la institución
         JPanel topPanel = new JPanel();
         topPanel.setBackground(new Color(128, 128, 255));
-        topPanel.setLayout(new FlowLayout(FlowLayout.CENTER)); // Centra el contenido
+        FlowLayout fl_topPanel = new FlowLayout(FlowLayout.CENTER);
+        fl_topPanel.setVgap(10);
+        topPanel.setLayout(fl_topPanel); // Centra el contenido
 
         // Logo centrado
         JLabel logo = new JLabel(new ImageIcon(swingApp.class.getResource("/resources/twitch_PNG3 (1).png")));
-        logo.setPreferredSize(new Dimension(100, 50)); // Ajuste del tamaño del logo
+        logo.setPreferredSize(new Dimension(400, 100)); // Ajuste del tamaño del logo
         topPanel.add(logo); // Añadimos el logo centrado
 
         // Panel inferior con el nombre de usuario
@@ -32,28 +34,6 @@ public class swingApp extends JFrame {
         JLabel userLabel = new JLabel("Néstor Hidalgo Leiva");
         bottomPanel.add(userLabel);
 
-        // Panel lateral con las opciones del menú (ahora entre el encabezado y el área de contenido)
-        JPanel leftPanel = new JPanel();
-        leftPanel.setBackground(new Color(128, 128, 192));
-        leftPanel.setLayout(new GridLayout(4, 1, 5, 5)); // Layout en cuadrícula con 4 filas
-
-        JLabel clientesLabel = new JLabel("Clientes", SwingConstants.CENTER);
-        clientesLabel.setForeground(Color.WHITE);
-        JLabel productosLabel = new JLabel("Productos", SwingConstants.CENTER);
-        productosLabel.setForeground(Color.WHITE);
-        JLabel facturasLabel = new JLabel("Facturas", SwingConstants.CENTER);
-        facturasLabel.setForeground(Color.WHITE);
-        JLabel usuarioLabel = new JLabel("Usuario", SwingConstants.CENTER);
-        usuarioLabel.setForeground(Color.BLACK);
-        usuarioLabel.setBackground(new Color(224, 224, 224));
-        usuarioLabel.setOpaque(true);
-
-        // Añadir los elementos al panel lateral
-        leftPanel.add(clientesLabel);
-        leftPanel.add(productosLabel);
-        leftPanel.add(facturasLabel);
-        leftPanel.add(usuarioLabel);
-
         // Menús emergentes para Clientes y Productos
         JPopupMenu clientesMenu = new JPopupMenu();
         JMenuItem altaClientes = new JMenuItem("Alta Clientes");
@@ -61,43 +41,56 @@ public class swingApp extends JFrame {
         clientesMenu.add(altaClientes);
         clientesMenu.add(bajaClientes);
 
-        clientesLabel.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mousePressed(MouseEvent e) {
-                clientesMenu.show(clientesLabel, e.getX(), e.getY());
-            }
-        });
-
         JPopupMenu productosMenu = new JPopupMenu();
         JMenuItem altaProductos = new JMenuItem("Alta Productos");
         JMenuItem listarProductos = new JMenuItem("Listar Productos");
         productosMenu.add(altaProductos);
         productosMenu.add(listarProductos);
 
-        productosLabel.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mousePressed(MouseEvent e) {
-                productosMenu.show(productosLabel, e.getX(), e.getY());
-            }
-        });
-
-        // Panel central donde irá el contenido dinámico
-        JPanel centerPanel = new JPanel();
-        centerPanel.setBackground(new Color(192, 192, 192));
-        centerPanel.setLayout(null);
-
-        JLabel centerLabel = new JLabel("Área de Contenido", SwingConstants.CENTER);
-        centerLabel.setBounds(223, 5, 90, 14);
-        centerPanel.add(centerLabel);
-
         // Crear un panel intermedio que contenga tanto el leftPanel como el centerPanel
-        JPanel midPanel = new JPanel(new BorderLayout());
-        midPanel.add(leftPanel, BorderLayout.WEST); // Panel lateral en la parte izquierda
-        midPanel.add(centerPanel, BorderLayout.CENTER); // Área de contenido en el centro
+        JPanel midPanel = new JPanel();
 
         // Agregar los paneles al layout principal
-        getContentPane().add(topPanel, BorderLayout.NORTH); // Panel superior
-        getContentPane().add(midPanel, BorderLayout.CENTER); // Panel intermedio con el menú y área de contenido
+        getContentPane().add(topPanel, BorderLayout.NORTH);
+        getContentPane().add(midPanel, BorderLayout.CENTER);
+        midPanel.setLayout(new BorderLayout(0, 0));
+        
+        JLabel centerLabel = new JLabel("Área de Contenido", SwingConstants.CENTER);
+        midPanel.add(centerLabel);
+        
+        JPanel midTopPanel = new JPanel();
+        FlowLayout flowLayout = (FlowLayout) midTopPanel.getLayout();
+        flowLayout.setVgap(0);
+        flowLayout.setHgap(0);
+        midPanel.add(midTopPanel, BorderLayout.NORTH);
+        
+        JLabel lblCliente = new JLabel("     Cliente      ", SwingConstants.CENTER);
+        lblCliente.setFont(new Font("Impact", Font.PLAIN, 28));
+        lblCliente.setOpaque(true);
+        lblCliente.setForeground(new Color(255, 255, 255));
+        lblCliente.setBackground(new Color(128, 128, 192));
+        midTopPanel.add(lblCliente);
+        
+        JLabel lblProductos = new JLabel("     Productos     ", SwingConstants.CENTER);
+        lblProductos.setFont(new Font("Impact", Font.PLAIN, 28));
+        lblProductos.setOpaque(true);
+        lblProductos.setForeground(new Color(255, 255, 255));
+        lblProductos.setBackground(new Color(128, 128, 192));
+        midTopPanel.add(lblProductos);
+        
+        JLabel lblFacturas = new JLabel("     Facturas     ", SwingConstants.CENTER);
+        lblFacturas.setFont(new Font("Impact", Font.PLAIN, 28));
+        lblFacturas.setOpaque(true);
+        lblFacturas.setForeground(new Color(255, 255, 255));
+        lblFacturas.setBackground(new Color(128, 128, 192));
+        midTopPanel.add(lblFacturas);
+        
+        JLabel lblUsuario = new JLabel("     Usuario     ", SwingConstants.CENTER);
+        lblUsuario.setFont(new Font("Impact", Font.PLAIN, 28));
+        lblUsuario.setOpaque(true);
+        lblUsuario.setForeground(Color.BLACK);
+        lblUsuario.setBackground(new Color(224, 224, 224));
+        midTopPanel.add(lblUsuario);
         getContentPane().add(bottomPanel, BorderLayout.SOUTH); // Panel inferior
     }
 

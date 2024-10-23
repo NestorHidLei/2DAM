@@ -179,9 +179,12 @@
 		<item key="FatJarPackageWizardPage.ANTSCRIPT_SAVE" value="false"/>
 		<item key="FatJarPackageWizardPage.ANTSCRIPT_LOCATION" value="C:\Users\Alumnado2DAM\eclipse-workspace"/>
 		<item key="FatJarPackageWizardPage.LIBRARY_HANDLING" value="1"/>
-		<item key="FatJarPackageWizardPage.LAUNCH_CONFIGURATION_SELECTION_NAME" value="CifraRSAApp - Actividad 2.04 - Cifrado Simétrico de mensajes con RSA 1"/>
-		<item key="FatJarPackageWizardPage.DESTINATION_PATH_SELECTION" value="Actividad 2.04 - Cifrado Simétrico de mensajes con RSA 1\Cifrardor.jar"/>
+		<item key="FatJarPackageWizardPage.LAUNCH_CONFIGURATION_SELECTION_NAME" value="DescifraRSAApp - Actividad 2.04 - Cifrado Simétrico de mensajes con RSA 1"/>
+		<item key="FatJarPackageWizardPage.DESTINATION_PATH_SELECTION" value="Actividad 2.04 - Cifrado Simétrico de mensajes con RSA 1\Descifrado.jar"/>
 		<list key="FatJarPackageWizardPage.DESTINATION_NAMES_ID">
+			<item value="Actividad 2.04 - Cifrado Simétrico de mensajes con RSA 1/Descifrado.jar"/>
+			<item value="C:\Users\Alumnado2DAM\Desktop\Cifrardor2.jar"/>
+			<item value="C:\Users\Alumnado2DAM\Desktop\Cifrardor.jar"/>
 			<item value="Actividad 2.04 - Cifrado Simétrico de mensajes con RSA 1\Cifrardor.jar"/>
 			<item value="Actividad 2.04 - Cifrado Simétrico de mensajes con RSA 1/Cifrardor.jar"/>
 			<item value="Actividad 2.04 - Cifrado Simétrico de mensajes con RSA 1\Cifrar.jar"/>

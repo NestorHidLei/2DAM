@@ -15,4 +15,10 @@
 			<item value="C:/Users/Alumnado2DAM/eclipse-workspace/Práctica 1 DI/src/resources/jcalendar-1.4.jar"/>
 		</list>
 	</section>
+	<section name="org.eclipse.wb.internal.core.model.property.editor.string.StringPropertyDialog">
+		<item key="x" value="695"/>
+		<item key="y" value="347"/>
+		<item key="width" value="530"/>
+		<item key="height" value="346"/>
+	</section>
 </section>

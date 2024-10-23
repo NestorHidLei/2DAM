@@ -84,18 +84,11 @@ public class swingApp extends JFrame {
         // Panel central donde irá el contenido dinámico
         JPanel centerPanel = new JPanel();
         centerPanel.setBackground(new Color(192, 192, 192));
-        GridBagLayout gbl_centerPanel = new GridBagLayout();
-        gbl_centerPanel.columnWeights = new double[]{1.0};
-        centerPanel.setLayout(gbl_centerPanel); // Usamos GridBagLayout para mayor flexibilidad
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.weightx = 1.0;
-        gbc.weighty = 1.0;
-        gbc.fill = GridBagConstraints.BOTH; // Permite que el panel ocupe todo el espacio disponible
+        centerPanel.setLayout(null);
 
         JLabel centerLabel = new JLabel("Área de Contenido", SwingConstants.CENTER);
-        centerPanel.add(centerLabel, gbc);
+        centerLabel.setBounds(223, 5, 90, 14);
+        centerPanel.add(centerLabel);
 
         // Crear un panel intermedio que contenga tanto el leftPanel como el centerPanel
         JPanel midPanel = new JPanel(new BorderLayout());

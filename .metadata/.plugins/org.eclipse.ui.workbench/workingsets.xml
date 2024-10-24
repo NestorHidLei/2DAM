@@ -39,8 +39,8 @@
 <workingSet IMemento.internal.id="Desarrollo de Interfaces"/>
 <workingSet IMemento.internal.id="Seguridad en Programación (HLC)"/>
 </workingSet>
-<mruList name="Acceso a Datos"/>
 <mruList name="Desarrollo de Interfaces"/>
+<mruList name="Acceso a Datos"/>
 <mruList name="Seguridad en Programación (HLC)"/>
 <mruList name="Programación de Servicios y Procesos"/>
 </workingSetManager>

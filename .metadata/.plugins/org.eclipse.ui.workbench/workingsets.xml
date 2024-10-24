@@ -21,6 +21,7 @@
 <item elementID="=Tarea 1. Consulta con JDBC" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 <item elementID="=tarea1_ficheros" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 <item elementID="=Tarea 2. Creación de tablas \(DDL) con JDBC \(opcional)" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=Examen JDBC y ficheros \(Parte 1)" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 <item elementID="=tarea2_biblioteca_conversiones" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 <item elementID="=Tarea 6. Llamadas a Procedimientos" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 <item elementID="=Tarea 3. Aplicación Swing y JDBC \(DML, Resultset, Statement)" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
@@ -38,8 +39,8 @@
 <workingSet IMemento.internal.id="Desarrollo de Interfaces"/>
 <workingSet IMemento.internal.id="Seguridad en Programación (HLC)"/>
 </workingSet>
+<mruList name="Acceso a Datos"/>
 <mruList name="Desarrollo de Interfaces"/>
 <mruList name="Seguridad en Programación (HLC)"/>
 <mruList name="Programación de Servicios y Procesos"/>
-<mruList name="Acceso a Datos"/>
 </workingSetManager>

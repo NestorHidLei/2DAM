@@ -1,67 +1,44 @@
 package swing;
 
-import javax.swing.DefaultListModel;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import resources.Productos;
-import javax.swing.JLabel;
-import java.awt.Font;
-import javax.swing.JScrollPane;
-import javax.swing.JList;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.awt.*;
+import java.util.ArrayList;
+import resources.Productos;  // Asegúrate de que este import esté correcto
 
-public class listarProductos extends JFrame {
+public class listarProductos extends JPanel {
 
-    private static final long serialVersionUID = 1L;
-    private JPanel contentPane;
-    private DefaultListModel<Productos> model;
-    private JList<Productos> listProductos;  // Asegurarse de que JList tenga el tipo Productos
+	private static final long serialVersionUID = 1L;
+	private JTable table;
+    private DefaultTableModel model;  // Modelo de la tabla
 
-    /**
-     * Create the frame.
-     */
-    public listarProductos() {
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setBounds(100, 100, 450, 300);
-        contentPane = new JPanel();
-        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+    // Constructor que recibe una lista de productos
+    public listarProductos(ArrayList<Productos> productos) {
+        setLayout(new BorderLayout());
 
-        setContentPane(contentPane);
-        contentPane.setLayout(null);
+        // Crear modelo de la tabla
+        model = new DefaultTableModel();
+        model.addColumn("Nombre");
+        model.addColumn("Precio");
+        model.addColumn("Es Perecedero");
 
-        JLabel lblNewLabel = new JLabel("Lista de Productos");
-        lblNewLabel.setFont(new Font("Palatino Linotype", Font.BOLD, 27));
-        lblNewLabel.setBounds(89, 11, 240, 37);
-        contentPane.add(lblNewLabel);
-
-        JScrollPane scrollPane = new JScrollPane();
-        scrollPane.setBounds(29, 59, 372, 178);
-        contentPane.add(scrollPane);
-
-        // Inicializar el modelo y la lista
-        model = new DefaultListModel<>();
-        model.clear();
-        altaProductos.listaProductos.add(new Productos("Manzana", 0.99, true));
-        altaProductos.listaProductos.add(new Productos("Leche", 1.49, true));
-        altaProductos.listaProductos.add(new Productos("Silla", 29.99, false));
-        altaProductos.listaProductos.add(new Productos("Televisor", 399.99, false));
-        altaProductos.listaProductos.add(new Productos("Yogurt", 0.89, true));
-        
-        listProductos = new JList<>(model);
-        scrollPane.setViewportView(listProductos);
-
-        // Actualizar la lista de productos al cargar la ventana
-        actualizarListaProductos();
-    }
-
-    // Método para actualizar la lista de productos en base a los productos añadidos
-    public void actualizarListaProductos() {
-    	// Limpiar el modelo actual
-        model.clear();  
-
-        // Agregar todos los productos de la lista estática de altaProductos
-        for (Productos producto : altaProductos.listaProductos) {
-            model.addElement(producto);
+        // Rellenar la tabla con los datos de los productos
+        for (Productos producto : productos) {
+            model.addRow(new Object[]{
+                    producto.getNombreProducto(),
+                    producto.getPrecio(),
+                    producto.isEsPerecedero() ? "Sí" : "No"  // Mostrar como "Sí" o "No"
+            });
         }
+
+        // Crear la tabla y configurar el modelo
+        table = new JTable(model);
+        JScrollPane scrollPane = new JScrollPane(table);
+        
+        // Añadir la tabla al panel
+        add(scrollPane, BorderLayout.CENTER);
+
+        // Configuración de la tabla
+        table.setFillsViewportHeight(true); // La tabla llenará el área de vista
     }
 }

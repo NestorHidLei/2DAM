@@ -2,7 +2,7 @@ package utils;
 
 public class Clientes {
 	
-	private String nombre;
+	private String nombre; 
 	private String apellidos;
 	private int edad;
 	private String provicia;

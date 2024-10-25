@@ -45,4 +45,6 @@
     <fullyQualifiedTypeName name="utils.UtilsBaseDatos"/>
     <fullyQualifiedTypeName name="java.lang.Character"/>
     <fullyQualifiedTypeName name="swing.swingApp"/>
+    <fullyQualifiedTypeName name="swing.altaProductos"/>
+    <fullyQualifiedTypeName name="utils.Productos"/>
 </qualifiedTypeNameHistroy>

@@ -4,7 +4,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import com.toedter.calendar.JDateChooser; // Importar JDateChooser
+import java.util.ArrayList;
+import com.toedter.calendar.JDateChooser;
+import utils.Clientes;
 
 public class altaClientes extends JPanel {
 
@@ -12,10 +14,19 @@ public class altaClientes extends JPanel {
     private JTextField txtApellidos;
     private JTextField txtEmail;
     private JComboBox<String> comboProvincia;
-    private JDateChooser dateChooser; // Usar JDateChooser para la fecha de nacimiento
+    private JDateChooser dateChooser;
+    private JLabel lblMensaje;
+    private ArrayList<Clientes> listaClientes; // Lista de clientes compartida
+    private Runnable actualizarTablaClientes;  // Runnable para actualizar la tabla
+    private swingApp mainApp;  // Referencia a la ventana principal
 
-    public altaClientes() {
-        setLayout(new GridLayout(6, 2)); // Usar un GridLayout para el formulario
+    // Modificar constructor para recibir la lista, el Runnable y la referencia a la ventana principal
+    public altaClientes(ArrayList<Clientes> listaClientes, Runnable actualizarTablaClientes, swingApp mainApp) {
+        this.listaClientes = listaClientes;  // Asignar la lista pasada
+        this.actualizarTablaClientes = actualizarTablaClientes;  // Guardar referencia al método de actualización
+        this.mainApp = mainApp;  // Guardar referencia a la ventana principal
+
+        setLayout(new GridLayout(7, 2));
 
         // Crear los componentes del formulario
         JLabel lblNombre = new JLabel("Nombre:");
@@ -33,17 +44,18 @@ public class altaClientes extends JPanel {
         });
 
         JLabel lblFechaNacimiento = new JLabel("Fecha de Nacimiento:");
-        dateChooser = new JDateChooser(); // Inicializar JDateChooser
-        dateChooser.setDateFormatString("dd/MM/yyyy"); // Establecer el formato de fecha
+        dateChooser = new JDateChooser();
+        dateChooser.setDateFormatString("dd/MM/yyyy");
 
         JButton btnGuardar = new JButton("Guardar");
         btnGuardar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Acción a realizar al pulsar el botón Guardar
-                guardarCliente();
+                guardarCliente();  // Guardar cliente y volver a la pantalla principal
             }
         });
+
+        lblMensaje = new JLabel("");
 
         // Añadir componentes al panel
         add(lblNombre);
@@ -56,31 +68,36 @@ public class altaClientes extends JPanel {
         add(comboProvincia);
         add(lblFechaNacimiento);
         add(dateChooser);
-        add(new JLabel()); // Espacio vacío para alinear el botón
+        add(new JLabel());
         add(btnGuardar);
+        add(lblMensaje);
     }
 
     private void guardarCliente() {
+        // Obtener datos del formulario
         String nombre = txtNombre.getText();
         String apellidos = txtApellidos.getText();
-        String email = txtEmail.getText();
-        String provincia = (String) comboProvincia.getSelectedItem(); // Obtener la provincia seleccionada
-        String fechaNacimiento = dateChooser.getDate() != null ? dateChooser.getDate().toString() : "No especificada"; // Obtener fecha
+        String provincia = (String) comboProvincia.getSelectedItem();
+        int edad = 2024 - dateChooser.getCalendar().getWeekYear();
 
-        // Aquí puedes añadir la lógica para guardar los datos del cliente, como una base de datos
-        // Por ejemplo, imprimir los datos en la consola
-        System.out.println("Cliente guardado:");
-        System.out.println("Nombre: " + nombre);
-        System.out.println("Apellidos: " + apellidos);
-        System.out.println("Email: " + email);
-        System.out.println("Provincia: " + provincia);
-        System.out.println("Fecha de Nacimiento: " + fechaNacimiento);
-        
-        // Limpiar los campos después de guardar
+        // Crear nuevo cliente y añadir a la lista compartida
+        Clientes nuevoCliente = new Clientes(nombre, apellidos, edad, provincia);
+        listaClientes.add(nuevoCliente);
+
+        // Mostrar mensaje de confirmación
+        lblMensaje.setText("Cliente guardado con éxito: " + nombre + " " + apellidos);
+
+        // Limpiar los campos del formulario
         txtNombre.setText("");
         txtApellidos.setText("");
         txtEmail.setText("");
-        comboProvincia.setSelectedIndex(0); // Restablecer a la primera provincia
-        dateChooser.setDate(null); // Restablecer el selector de fecha
+        comboProvincia.setSelectedIndex(0);
+        dateChooser.setDate(null);
+
+        // Llamar al Runnable para actualizar la tabla en swingApp
+        actualizarTablaClientes.run();
+
+        // Volver al panel principal después de guardar
+        mainApp.mostrarPantallaPrincipal();
     }
 }

@@ -5,10 +5,17 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import utils.Clientes;
+import utils.Productos;
 
 public class swingApp extends JFrame {
 
     private JPanel midPanel;  // Panel que contiene el JTable o los formularios
+    private DefaultTableModel model;  // Modelo de la tabla
+    private ArrayList<Clientes> listaClientes;  // Lista de clientes
+    private ArrayList<Productos> listaProductos;  // Lista de productos
+    private JPanel midTopPanel; // Panel para la barra de opciones
 
     public swingApp() {
         // Configuración de la ventana
@@ -18,12 +25,16 @@ public class swingApp extends JFrame {
         setLocationRelativeTo(null); // Centra la ventana
         getContentPane().setLayout(new BorderLayout());
 
+        listaClientes = new ArrayList<>();  // Inicializar la lista de clientes
+        listaProductos = new ArrayList<>(); // Inicializar la lista de productos
+        cargarClientesPrueba();  // Cargar clientes de prueba
+        cargarProductosPrueba(); // Cargar productos de prueba
+
         // Panel superior con el logo y el nombre de la institución
         JPanel topPanel = new JPanel();
         topPanel.setBackground(new Color(128, 128, 255));
         FlowLayout fl_topPanel = new FlowLayout(FlowLayout.CENTER);
         fl_topPanel.setVgap(10);
-        topPanel.setLayout(fl_topPanel); // Centra el contenido
 
         // Logo centrado
         JLabel logo = new JLabel(new ImageIcon(swingApp.class.getResource("/resources/twitch_PNG3 (1).png")));
@@ -41,16 +52,48 @@ public class swingApp extends JFrame {
         midPanel = new JPanel();
         midPanel.setLayout(new BorderLayout(0, 0));
 
-        // Agregar los paneles al layout principal
-        getContentPane().add(topPanel, BorderLayout.NORTH);
-        getContentPane().add(midPanel, BorderLayout.CENTER);
-
-        JPanel midTopPanel = new JPanel();
+        // Panel para la barra superior de opciones
+        midTopPanel = new JPanel();
         FlowLayout flowLayout = (FlowLayout) midTopPanel.getLayout();
         flowLayout.setVgap(0);
         flowLayout.setHgap(0);
-        midPanel.add(midTopPanel, BorderLayout.NORTH);
+        agregarBarraOpciones(); // Agregar la barra superior con opciones
 
+        // Agregar los paneles al layout principal
+        getContentPane().add(topPanel, BorderLayout.NORTH);
+        getContentPane().add(midPanel, BorderLayout.CENTER);
+        getContentPane().add(bottomPanel, BorderLayout.SOUTH);
+
+        // Mostrar la pantalla principal con la tabla
+        mostrarPantallaPrincipal();
+    }
+
+    // Método para cargar productos de prueba
+    private void cargarProductosPrueba() {
+        listaProductos.add(new Productos("Leche", 1.20, true));
+        listaProductos.add(new Productos("Pan", 0.80, true));
+        listaProductos.add(new Productos("Manzanas", 1.50, true));
+        listaProductos.add(new Productos("Carne", 10.00, false));
+        listaProductos.add(new Productos("Pescado", 15.00, false));
+        listaProductos.add(new Productos("Arroz", 0.90, false));
+        listaProductos.add(new Productos("Azúcar", 1.00, false));
+        listaProductos.add(new Productos("Café", 3.50, false));
+        listaProductos.add(new Productos("Aceite", 4.00, false));
+        listaProductos.add(new Productos("Pastas", 1.80, false));
+        listaProductos.add(new Productos("Queso", 2.50, true));
+        listaProductos.add(new Productos("Yogur", 0.90, true));
+        listaProductos.add(new Productos("Galletas", 2.20, false));
+        listaProductos.add(new Productos("Cereales", 3.00, false));
+        listaProductos.add(new Productos("Jugo", 1.70, true));
+        listaProductos.add(new Productos("Frutas Mixtas", 5.00, true));
+        listaProductos.add(new Productos("Verduras Mixtas", 4.00, true));
+        listaProductos.add(new Productos("Pasta de Dientes", 1.30, false));
+        listaProductos.add(new Productos("Champú", 2.00, false));
+        listaProductos.add(new Productos("Detergente", 3.00, false));
+    }
+
+    // Método para agregar la barra de opciones
+    private void agregarBarraOpciones() {
         JLabel lblCliente = new JLabel("     Cliente      ", SwingConstants.CENTER);
         lblCliente.setFont(new Font("Impact", Font.PLAIN, 28));
         lblCliente.setOpaque(true);
@@ -79,9 +122,6 @@ public class swingApp extends JFrame {
                     case 1:
                         replaceWithBajaClientes();
                         break;
-                    case 2:
-                        System.exit(0); // Salir de la aplicación
-                        break;
                     default:
                         break;
                 }
@@ -95,6 +135,33 @@ public class swingApp extends JFrame {
         lblProductos.setOpaque(true);
         lblProductos.setForeground(new Color(255, 255, 255));
         lblProductos.setBackground(new Color(128, 128, 192));
+        // Agregar MouseListener al label de Cliente
+        lblProductos.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // Mostrar opciones al hacer clic en el label de Cliente
+                String[] options = {"Dar de alta productos", "Listar Productos", "Salir"};
+                int choice = JOptionPane.showOptionDialog(swingApp.this, 
+                        "Seleccione una opción", 
+                        "Productos", 
+                        JOptionPane.DEFAULT_OPTION, 
+                        JOptionPane.INFORMATION_MESSAGE, 
+                        null, 
+                        options, 
+                        options[0]);
+
+                switch (choice) {
+                    case 0:
+                        replaceWithAltaProductos();
+                        break;
+                    case 1:
+                        replaceWithListarProductos();
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
         midTopPanel.add(lblProductos);
 
         JLabel lblFacturas = new JLabel("     Facturas     ", SwingConstants.CENTER);
@@ -107,74 +174,99 @@ public class swingApp extends JFrame {
         JLabel lblUsuario = new JLabel("     Usuario     ", SwingConstants.CENTER);
         lblUsuario.setFont(new Font("Impact", Font.PLAIN, 28));
         lblUsuario.setOpaque(true);
-        lblUsuario.setForeground(Color.BLACK);
-        lblUsuario.setBackground(new Color(224, 224, 224));
+        lblUsuario.setForeground(new Color(255, 255, 255));
+        lblUsuario.setBackground(new Color(128, 128, 192));
         midTopPanel.add(lblUsuario);
-        
-        getContentPane().add(bottomPanel, BorderLayout.SOUTH); // Panel inferior
-        
-        // Crear tabla con los datos de los clientes
-        createClientTable(); // Crea la tabla inicialmente
+
+        midPanel.add(midTopPanel, BorderLayout.NORTH);  // Añadir la barra al midPanel
     }
 
-    private void createClientTable() {
-        // Crear tabla con los datos de los clientes
-        String[] columnNames = { "Nombre", "Apellidos", "Email", "Provincia", "Edad" };
-        Object[][] data = {
-                { "Juan", "Pérez", "juan.perez@example.com", "Málaga", 30 },
-                { "Ana", "Gómez", "ana.gomez@example.com", "Sevilla", 28 },
-                { "Luis", "Martínez", "luis.martinez@example.com", "Cádiz", 35 },
-                { "Marta", "Fernández", "marta.fernandez@example.com", "Granada", 22 },
-                { "Carlos", "López", "carlos.lopez@example.com", "Almería", 40 },
-                { "Laura", "García", "laura.garcia@example.com", "Córdoba", 26 },
-                { "José", "Sánchez", "jose.sanchez@example.com", "Jaén", 33 },
-                { "Carmen", "Jiménez", "carmen.jimenez@example.com", "Huelva", 29 },
-                { "Antonio", "Torres", "antonio.torres@example.com", "Málaga", 38 },
-                { "Patricia", "Moreno", "patricia.moreno@example.com", "Sevilla", 31 },
-                { "Javier", "Vazquez", "javier.vazquez@example.com", "Cádiz", 27 },
-                { "Sara", "Castro", "sara.castro@example.com", "Granada", 25 },
-                { "Diego", "Mendoza", "diego.mendoza@example.com", "Almería", 36 },
-                { "Silvia", "Ramos", "silvia.ramos@example.com", "Córdoba", 23 },
-                { "Roberto", "Ruiz", "roberto.ruiz@example.com", "Jaén", 34 },
-                { "Raquel", "Reyes", "raquel.reyes@example.com", "Huelva", 32 },
-                { "Álvaro", "González", "alvaro.gonzalez@example.com", "Málaga", 37 },
-                { "Elena", "Díaz", "elena.diaz@example.com", "Sevilla", 24 },
-                { "Ricardo", "Hernández", "ricardo.hernandez@example.com", "Cádiz", 30 },
-                { "Claudia", "Paredes", "claudia.paredes@example.com", "Granada", 29 }
-        };
+    
 
-        // Crear el modelo de la tabla
-        DefaultTableModel model = new DefaultTableModel(data, columnNames);
-        JTable table = new JTable(model);
+	// Método para mostrar el panel principal con la tabla de clientes
+    public void mostrarPantallaPrincipal() {
+        JPanel panelPrincipal = new JPanel();
+        panelPrincipal.setLayout(new BorderLayout());
 
-        // Añadir la tabla a un JScrollPane para que tenga barras de desplazamiento
+        // Tabla de clientes
+        JTable table = new JTable();
+        model = new DefaultTableModel();
+        model.addColumn("Nombre");
+        model.addColumn("Apellidos");
+        model.addColumn("Edad");
+        model.addColumn("Provincia");
+
+        table.setModel(model);
         JScrollPane scrollPane = new JScrollPane(table);
-        midPanel.add(scrollPane, BorderLayout.CENTER);
+        panelPrincipal.add(scrollPane, BorderLayout.CENTER);
+
+        cargarClientes();  // Cargar los datos en la tabla
+
+        midPanel.removeAll();  // Limpiar midPanel antes de cambiar contenido
+        midPanel.add(midTopPanel, BorderLayout.NORTH);  // Asegurar que la barra se mantenga
+        midPanel.add(panelPrincipal, BorderLayout.CENTER);  // Añadir la tabla
+        midPanel.revalidate();
+        midPanel.repaint();
     }
 
+    // Método para cargar los datos de los clientes en la tabla
+    private void cargarClientes() {
+        model.setRowCount(0); // Limpiar la tabla
+        for (Clientes cliente : listaClientes) {
+            model.addRow(new Object[]{cliente.getNombre(), cliente.getApellidos(), cliente.getEdad(), cliente.getProvicia()});
+        }
+    }
+
+    // Método para reemplazar el panel actual por el formulario de altaClientes
     private void replaceWithAltaClientes() {
-        midPanel.removeAll();  // Limpiar el panel
-
-        altaClientes altaClientesPanel = new altaClientes(); // Crear la instancia de altaClientes
-        altaClientesPanel.setSize(610, 500); // Asegúrate de que el tamaño es correcto
-        midPanel.add(altaClientesPanel, BorderLayout.CENTER); // Añadir el nuevo panel
-        midPanel.revalidate();  // Actualiza el panel
-        midPanel.repaint(); // Repaint para asegurar que se vea
+        altaClientes panelAlta = new altaClientes(listaClientes, () -> mostrarPantallaPrincipal(), swingApp.this);  // Pasar la lista y el Runnable
+        midPanel.removeAll();  // Limpiar midPanel antes de cambiar contenido
+        midPanel.add(midTopPanel, BorderLayout.NORTH);  // Asegurar que la barra se mantenga
+        midPanel.add(panelAlta, BorderLayout.CENTER);  // Añadir el formulario de alta
+        midPanel.revalidate();
+        midPanel.repaint();
     }
 
+    // Método para reemplazar el panel actual por la opción de bajaClientes
     private void replaceWithBajaClientes() {
-        midPanel.removeAll();  // Limpiar el panel
-        bajaClientes bajaClientesPanel = new bajaClientes(); // Crear la instancia de bajaClientes
-        bajaClientesPanel.setSize(610, 500); // Asegúrate de que el tamaño es correcto
-        midPanel.add(bajaClientesPanel, BorderLayout.CENTER); // Añadir el nuevo panel
-        midPanel.revalidate();  // Actualiza el panel
-        midPanel.repaint(); // Repaint para asegurar que se vea
+        bajaClientes panelBaja = new bajaClientes(listaClientes, () -> mostrarPantallaPrincipal());  // Pasar la lista y el Runnable
+        midPanel.removeAll();  // Limpiar midPanel antes de cambiar contenido
+        midPanel.add(midTopPanel, BorderLayout.NORTH);  // Asegurar que la barra se mantenga
+        midPanel.add(panelBaja, BorderLayout.CENTER);  // Añadir el formulario de baja
+        midPanel.revalidate();
+        midPanel.repaint();
+    }
+    
+    protected void replaceWithAltaProductos() {
+        altaProductos panelAltaProductos = new altaProductos(listaProductos); // Pasar la lista de productos
+        midPanel.removeAll(); // Limpiar midPanel antes de cambiar contenido
+        midPanel.add(midTopPanel, BorderLayout.NORTH); // Asegurar que la barra se mantenga
+        midPanel.add(panelAltaProductos, BorderLayout.CENTER); // Añadir el formulario de alta
+        midPanel.revalidate();
+        midPanel.repaint();
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            swingApp frame = new swingApp();
-            frame.setVisible(true);
-        });
+
+    protected void replaceWithListarProductos() {
+        listarProductos panelListarProductos = new listarProductos(listaProductos); // Pasar la lista de productos
+        midPanel.removeAll(); // Limpiar midPanel antes de cambiar contenido
+        midPanel.add(midTopPanel, BorderLayout.NORTH); // Asegurar que la barra se mantenga
+        midPanel.add(panelListarProductos, BorderLayout.CENTER); // Añadir el panel de listar productos
+        midPanel.revalidate();
+        midPanel.repaint();
+    }
+
+    // Cargar clientes de prueba para llenar la tabla inicialmente
+    private void cargarClientesPrueba() {
+        listaClientes.add(new Clientes("John", "Doe", 30, "Almería"));
+        listaClientes.add(new Clientes("Jane", "Smith", 25, "Sevilla"));
+        listaClientes.add(new Clientes("Juan", "Pérez", 30, "Málaga"));
+        listaClientes.add(new Clientes("Ana", "Gómez", 28, "Sevilla"));
+        listaClientes.add(new Clientes("Luis", "Martínez", 35, "Cádiz"));
+        listaClientes.add(new Clientes("Marta", "Fernández", 22, "Granada"));
+        listaClientes.add(new Clientes("Carlos", "López", 40, "Almería"));
+        listaClientes.add(new Clientes("Laura", "García", 26, "Córdoba"));
+        listaClientes.add(new Clientes("José", "Sánchez", 33, "Jaén"));
+        listaClientes.add(new Clientes("Carmen", "Jiménez", 29, "Huelva"));
     }
 }

@@ -3,7 +3,6 @@
     <fullyQualifiedTypeName name="models.Empleados"/>
     <fullyQualifiedTypeName name="utils.UtilsFicheroArray"/>
     <fullyQualifiedTypeName name="java.lang.IllegalArgumentException"/>
-    <fullyQualifiedTypeName name="java.lang.String"/>
     <fullyQualifiedTypeName name="java.io.FileReader"/>
     <fullyQualifiedTypeName name="java.io.ObjectInputStream"/>
     <fullyQualifiedTypeName name="java.io.FileInputStream"/>
@@ -15,12 +14,9 @@
     <fullyQualifiedTypeName name="java.sql.Connection"/>
     <fullyQualifiedTypeName name="conexion.Conexion"/>
     <fullyQualifiedTypeName name="java.security.Timestamp"/>
-    <fullyQualifiedTypeName name="java.io.BufferedWriter"/>
-    <fullyQualifiedTypeName name="java.io.FileWriter"/>
     <fullyQualifiedTypeName name="actividad106.ejercicio01.Maestro"/>
     <fullyQualifiedTypeName name="java.lang.Process"/>
     <fullyQualifiedTypeName name="java.lang.ProcessBuilder"/>
-    <fullyQualifiedTypeName name="java.io.BufferedReader"/>
     <fullyQualifiedTypeName name="java.time.Year"/>
     <fullyQualifiedTypeName name="java.sql.Timestamp"/>
     <fullyQualifiedTypeName name="java.io.OutputStream"/>
@@ -47,4 +43,11 @@
     <fullyQualifiedTypeName name="swing.swingApp"/>
     <fullyQualifiedTypeName name="swing.altaProductos"/>
     <fullyQualifiedTypeName name="utils.Productos"/>
+    <fullyQualifiedTypeName name="java.io.BufferedWriter"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
+    <fullyQualifiedTypeName name="java.io.BufferedReader"/>
+    <fullyQualifiedTypeName name="java.io.FileWriter"/>
+    <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
+    <fullyQualifiedTypeName name="swing.Registro"/>
 </qualifiedTypeNameHistroy>

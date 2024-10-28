@@ -50,4 +50,5 @@
     <fullyQualifiedTypeName name="java.io.FileWriter"/>
     <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
     <fullyQualifiedTypeName name="swing.Registro"/>
+    <fullyQualifiedTypeName name="mainApp.mainApp"/>
 </qualifiedTypeNameHistroy>

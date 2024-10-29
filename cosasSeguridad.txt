@@ -1,0 +1,14 @@
+Actividad 2.01 Hash desde línea de comando.
+	- cd .\Downloads\
+	- Get-FileHash <FileName> | Format-List
+	- Get-FileHash .\Infraestructura.txt | Format-List
+Ejecutar jar:
+	- Java -jar <nombreJar> <argumentos>
+Comandos Certificados 
+	- Crear Almacen: keytool -genkeypair -keyalg RSA -keysize 2048 -keystore <nombreAlmacen> -alias nestor -validity <diasDisponible>
+	- Exportar Certificado: keytool -exportcert -alias <alias> -keystore <nombre_almacen> -rfc -file <nombre_archivo>
+	- Ver Listado de Claves: keytool -list -keystore <nombreAlmacen>
+	- Importar certificado: keytool -importcert -alias <alias> -file <archivo_certificado.cer> -keystore <almacen_claves.jks>
+
+Firma archivo JAR: 
+	- jarsigner -keystore <almacen_claves.jks> -signedjar <archivo_firmado.jar> <archivo_original.jar> <mi_alias>

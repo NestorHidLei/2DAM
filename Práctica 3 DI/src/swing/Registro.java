@@ -59,7 +59,7 @@ public class Registro extends JFrame {
 		panelCabezeraRegistro.setBackground(new Color(0, 215, 232));
 		panelCabezeraRegistro.setBounds(0, 0, 477, 75);
 		contentPane.add(panelCabezeraRegistro);
-		panelCabezeraRegistro.setLayout(new BorderLayout(0, 0));
+		panelCabezeraRegistro.setLayout(new BorderLayout(0, 0)); 
 
 		JLabel lblRegistro = new JLabel("Registro de Usuarios");
 		lblRegistro.setBackground(new Color(0, 215, 232));

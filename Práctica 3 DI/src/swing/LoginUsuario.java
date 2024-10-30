@@ -11,16 +11,18 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class LoginUsuario extends JPanel {
+public class LoginUsuario extends JPanel{
 
     private static final long serialVersionUID = 1L;
     
 	private static final String USUARIOS = "Usuarios.csv";
+    private Login login;
     
     private JTextField usernameField;
     private JPasswordField passwordField_1;
 
-    public LoginUsuario() {
+    public LoginUsuario(Login login) {
+    	this.login = login;
         setBackground(new Color(198, 242, 244));
         
         JLabel lblUsuario = new JLabel("Usuario:");
@@ -117,47 +119,56 @@ public class LoginUsuario extends JPanel {
         setLayout(groupLayout);
     }
 
-	protected void iniciarSesion() {
+    protected void iniciarSesion() {
+    	// Variable para rastrear si se encontró un usuario válido
+        boolean encontrado = false; 
+
         // Intenta leer el archivo
         try (BufferedReader entrada = new BufferedReader(new FileReader(USUARIOS))) {
             String linea;
 
             // Mientras que la linea no sea null
-            while ((linea = entrada.readLine()) != null) {
+            while ((linea = entrada.readLine()) != null && !encontrado) {
                 // Divide la linea en partes, eliminando las comillas dobles y separando por ";"
                 String[] partes_usuario = linea.replace("\"", "").split(";");
-                    String username = partes_usuario[4];
-                    String password = partes_usuario[5];
+                String username = partes_usuario[4];
+                String password = partes_usuario[5];
 
-                    // Obtiene los valores ingresados en los campos de texto
-                    String inputUsername = usernameField.getText();
-                    String inputPassword = new String(passwordField_1.getPassword());
+                // Obtiene los valores ingresados en los campos de texto
+                String inputUsername = usernameField.getText();
+                String inputPassword = new String(passwordField_1.getPassword());
 
-                    // Verifica si los datos ingresados coinciden con los del archivo
-                    if (username.equals(inputUsername) && password.equals(inputPassword)) {
-                        JOptionPane.showMessageDialog(this, "Iniciando Sesión");
-                     // Abre la ventana correspondiente según el perfil
-                        if (partes_usuario[3].equals("Administrador")) {
-                            new AdminFrame().setVisible(true); 
-                        } else if (partes_usuario[3].equals("Cliente")) {
-                            new UserFrame().setVisible(true); 
-                        } else {
-                            JOptionPane.showMessageDialog(this, "Perfil desconocido");
-                        }
+                // Verifica si los datos ingresados coinciden con los del archivo
+                if (username.equals(inputUsername) && password.equals(inputPassword)) {
+                    encontrado = true; // Se encontró el usuario
+
+                    // Abre la ventana correspondiente según el perfil
+                    if (partes_usuario[3].equals("Administrador")) {
+                    	
+                        new AdminFrame().setVisible(true); 
+                    } else if (partes_usuario[3].equals("Cliente")) {
+                    	login.cerrar();;
+                        new UserFrame().setVisible(true); 
                     } else {
-                        // Mensaje de error si no se encontró coincidencia
-                        JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos");
+                        JOptionPane.showMessageDialog(this, "Perfil desconocido");
                     }
                 }
-            } catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+            }
 
+            // Si no se encontró un usuario coincidente, muestra el mensaje de error
+            if (!encontrado) {
+                JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos"); 
+            }
 
+        } catch (FileNotFoundException e) {
+            JOptionPane.showMessageDialog(this, "Archivo de usuarios no encontrado");
+            e.printStackTrace();
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "Error al leer el archivo de usuarios");
+            e.printStackTrace();
         }
+    }
+    
+    
 
 }

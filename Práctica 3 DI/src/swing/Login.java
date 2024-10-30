@@ -53,7 +53,7 @@ public class Login extends JFrame {
 		JLabel lblTitulo = new JLabel("GYM Picasso");
 		lblTitulo.setForeground(new Color(0, 64, 128));
 		lblTitulo.setFont(new Font("Verdana", Font.BOLD, 30));
-		panelCabecera.add(lblTitulo);
+		panelCabecera.add(lblTitulo); 
 		
 		JPanel panelImagen = new JPanel();
 		panelImagen.setBackground(new Color(255, 255, 255));
@@ -78,7 +78,7 @@ public class Login extends JFrame {
 		panelDerecha.add(panelLogin);
 		panelLogin.setLayout(new GridLayout(1, 0, 0, 0));
 		panelLogin.setPreferredSize(new Dimension(50,120));
-		LoginUsuario = new LoginUsuario();
+		LoginUsuario = new LoginUsuario(this	);
 		JScrollPane scrollPane = new JScrollPane(LoginUsuario);
 		panelLogin.add(scrollPane);
 		
@@ -94,4 +94,8 @@ public class Login extends JFrame {
 		lblBienvenido.setHorizontalAlignment(SwingConstants.CENTER);
 		panelBienvenido.add(lblBienvenido);
 	}
+	
+	public void cerrar() {
+    	this.dispose();
+    }
 }

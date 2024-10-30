@@ -51,4 +51,6 @@
     <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
     <fullyQualifiedTypeName name="swing.Registro"/>
     <fullyQualifiedTypeName name="mainApp.mainApp"/>
+    <fullyQualifiedTypeName name="java.awt.RenderingHints.Key"/>
+    <fullyQualifiedTypeName name="swing.Login"/>
 </qualifiedTypeNameHistroy>

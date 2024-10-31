@@ -11,7 +11,6 @@
     <fullyQualifiedTypeName name="java.io.EOFException"/>
     <fullyQualifiedTypeName name="java.nio.file.Files"/>
     <fullyQualifiedTypeName name="java.sql.DriverManager"/>
-    <fullyQualifiedTypeName name="java.sql.Connection"/>
     <fullyQualifiedTypeName name="conexion.Conexion"/>
     <fullyQualifiedTypeName name="java.security.Timestamp"/>
     <fullyQualifiedTypeName name="actividad106.ejercicio01.Maestro"/>
@@ -31,7 +30,6 @@
     <fullyQualifiedTypeName name="resources.Profesor"/>
     <fullyQualifiedTypeName name="resources.Asignatura"/>
     <fullyQualifiedTypeName name="java.io.PrintWriter"/>
-    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
     <fullyQualifiedTypeName name="java.sql.CallableStatement"/>
     <fullyQualifiedTypeName name="java.sql.ResultSet"/>
     <fullyQualifiedTypeName name="javax.swing.DefaultListModel"/>
@@ -53,4 +51,13 @@
     <fullyQualifiedTypeName name="mainApp.mainApp"/>
     <fullyQualifiedTypeName name="java.awt.RenderingHints.Key"/>
     <fullyQualifiedTypeName name="swing.Login"/>
+    <fullyQualifiedTypeName name="aplication.MainApp"/>
+    <fullyQualifiedTypeName name="javafx.fxml.FXMLLoader"/>
+    <fullyQualifiedTypeName name="javafx.scene.Scene"/>
+    <fullyQualifiedTypeName name="java.sql.SQLException"/>
+    <fullyQualifiedTypeName name="java.sql.Connection"/>
+    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+    <fullyQualifiedTypeName name="dao.CityDao"/>
+    <fullyQualifiedTypeName name="dao.CityDaoImpl"/>
+    <fullyQualifiedTypeName name="model.City"/>
 </qualifiedTypeNameHistroy>

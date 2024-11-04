@@ -5,9 +5,12 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashSet;
 
 public class ReservarClase extends JFrame {
 
@@ -48,10 +51,6 @@ public class ReservarClase extends JFrame {
         comboBoxClase = new JComboBox<>();
         comboBoxClase.setFont(new Font("Verdana", Font.PLAIN, 14));
         comboBoxClase.setBounds(150, 70, 180, 25);
-        comboBoxClase.addItem("Yoga");
-        comboBoxClase.addItem("Pilates");
-        comboBoxClase.addItem("Spinning");
-        comboBoxClase.addItem("CrossFit");
         contentPane.add(comboBoxClase);
 
         // Etiqueta y ComboBox para Turno
@@ -63,8 +62,6 @@ public class ReservarClase extends JFrame {
         comboBoxTurno = new JComboBox<>();
         comboBoxTurno.setFont(new Font("Verdana", Font.PLAIN, 14));
         comboBoxTurno.setBounds(150, 110, 180, 25);
-        comboBoxTurno.addItem("Mañana");
-        comboBoxTurno.addItem("Tarde");
         contentPane.add(comboBoxTurno);
 
         // Botón Reservar
@@ -88,6 +85,39 @@ public class ReservarClase extends JFrame {
                 }
             }
         });
+
+        // Llenar los ComboBox con datos del CSV
+        cargarDatosDesdeCSV("clases.csv");
+    }
+
+    /**
+     * Lee las clases y turnos desde un archivo CSV y los agrega a los ComboBox.
+     */
+    private void cargarDatosDesdeCSV(String fileName) {
+        HashSet<String> clases = new HashSet<>();
+        HashSet<String> turnos = new HashSet<>();
+
+        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] values = line.split(";");
+                if (values.length == 2) {
+                    clases.add(values[0].trim());
+                    turnos.add(values[1].trim());
+                }
+            }
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "Error al leer el archivo CSV", "Error", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+        }
+
+        // Agregar clases y turnos únicos a los ComboBox
+        for (String clase : clases) {
+            comboBoxClase.addItem(clase);
+        }
+        for (String turno : turnos) {
+            comboBoxTurno.addItem(turno);
+        }
     }
 
     /**
@@ -100,17 +130,5 @@ public class ReservarClase extends JFrame {
             JOptionPane.showMessageDialog(this, "Error al escribir en el archivo CSV", "Error", JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();
         }
-    }
-
-    // Método principal para ejecutar la ventana
-    public static void main(String[] args) {
-        EventQueue.invokeLater(() -> {
-            try {
-                ReservarClase frame = new ReservarClase();
-                frame.setVisible(true);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
     }
 }

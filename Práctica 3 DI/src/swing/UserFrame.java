@@ -10,17 +10,28 @@ import swing.user.ReservarClase;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import java.awt.Font;
 import java.awt.GridLayout;
 import javax.swing.SwingConstants;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserFrame extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	private String currentUserEmail;
+
+	 private static final String USUARIOS = "Usuarios.csv";
 
 	/**
 	 * Create the frame.
@@ -31,6 +42,9 @@ public class UserFrame extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
+		// Marcar la sesión como activa en el archivo CSV
+        actualizarSesion(true);
+		
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
@@ -76,8 +90,10 @@ public class UserFrame extends JFrame {
 		lblCerrarSesion.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				 actualizarSesion(false);
 				Login login = new Login();
             	login.setVisible(true); 
+            	dispose();
 			}
 		});
 		lblCerrarSesion.setVerticalTextPosition(SwingConstants.BOTTOM);
@@ -85,5 +101,35 @@ public class UserFrame extends JFrame {
 		lblCerrarSesion.setHorizontalTextPosition(SwingConstants.CENTER);
 		panelCentral.add(lblCerrarSesion);
 	}
+	
+	// Método para actualizar el estado de sesión en el archivo CSV
+    private void actualizarSesion(boolean estadoSesion) {
+        List<String> usuariosActualizados = new ArrayList<>();
 
+        try (BufferedReader entrada = new BufferedReader(new FileReader(USUARIOS))) {
+            String linea;
+            while ((linea = entrada.readLine()) != null) {
+                String[] partesUsuario = linea.split(";");
+                if (partesUsuario[4].equals(currentUserEmail)) {
+                    // Modificar el último campo (estado de sesión) a true o false según estadoSesion
+                    partesUsuario[6] = String.valueOf(estadoSesion);
+                    linea = String.join(";", partesUsuario);
+                }
+                usuariosActualizados.add(linea); // Agregar la línea (modificada o no) a la lista
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error al leer el archivo de usuarios");
+        }
+
+        // Sobrescribir el archivo con la lista actualizada
+        try (PrintWriter salida = new PrintWriter(new FileWriter(USUARIOS))) {
+            for (String usuario : usuariosActualizados) {
+                salida.println(usuario);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error al actualizar el archivo de usuarios");
+        }
+    }
 }

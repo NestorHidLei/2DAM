@@ -77,7 +77,7 @@ public class Login extends JFrame {
 		panelDerecha.add(panelLogin);
 		panelLogin.setLayout(new GridLayout(1, 0, 0, 0));
 		panelLogin.setPreferredSize(new Dimension(50,120));
-		LoginUsuario = new LoginUsuario(this	);
+		LoginUsuario = new LoginUsuario(this);
 		JScrollPane scrollPane = new JScrollPane(LoginUsuario);
 		panelLogin.add(scrollPane);
 		

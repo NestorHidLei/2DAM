@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class LoginUsuario extends JPanel {
 
@@ -21,11 +22,11 @@ public class LoginUsuario extends JPanel {
 
     public LoginUsuario(Login login) {
         this.login = login;
-        setBackground(new Color(198, 242, 244));
+        setBackground(new Color(255, 255, 255));
         
 
-        JLabel lblUsuario = new JLabel("Usuario:");
-        lblUsuario.setFont(new Font("Verdana", Font.PLAIN, 20));
+        JLabel lblEmail = new JLabel("Usuario:");
+        lblEmail.setFont(new Font("Verdana", Font.PLAIN, 20));
 
         JLabel lblContrasenia = new JLabel("Contraseña:");
         lblContrasenia.setFont(new Font("Verdana", Font.PLAIN, 20));
@@ -33,6 +34,7 @@ public class LoginUsuario extends JPanel {
         usernameField = new JTextField(20);
 
         JLabel lblNewLabel = new JLabel(" Iniciar Sesión");
+        lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
         lblNewLabel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
@@ -54,9 +56,10 @@ public class LoginUsuario extends JPanel {
         lblNewLabel.setForeground(new Color(255, 255, 255));
         lblNewLabel.setFont(new Font("Verdana", Font.BOLD, 17));
 
-        JLabel lblPulsaAquPara = new JLabel(" Pulsa aquí para registrarse");
+        JLabel lblPulsaAquPara = new JLabel("¿No tienes cuenta?");
+        lblPulsaAquPara.setHorizontalAlignment(SwingConstants.CENTER);
         lblPulsaAquPara.addMouseListener(new MouseAdapter() {
-            @Override
+        	@Override
             public void mouseEntered(MouseEvent e) {
                 lblPulsaAquPara.setBackground(new Color(0, 120, 180));
             }
@@ -68,7 +71,7 @@ public class LoginUsuario extends JPanel {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-                Registro registro = new Registro();
+            	Registro registro = new Registro();
                 registro.setVisible(true);
             }
         });
@@ -80,43 +83,46 @@ public class LoginUsuario extends JPanel {
         passwordField_1 = new JPasswordField();
         GroupLayout groupLayout = new GroupLayout(this);
         groupLayout.setHorizontalGroup(
-            groupLayout.createParallelGroup(Alignment.LEADING)
-                .addGroup(groupLayout.createSequentialGroup()
-                    .addGap(42)
-                    .addComponent(lblUsuario)
-                    .addGap(10)
-                    .addComponent(usernameField, GroupLayout.PREFERRED_SIZE, 302, GroupLayout.PREFERRED_SIZE))
-                .addGroup(groupLayout.createSequentialGroup()
-                    .addGap(10)
-                    .addComponent(lblContrasenia)
-                    .addGap(4)
-                    .addComponent(passwordField_1, GroupLayout.PREFERRED_SIZE, 302, GroupLayout.PREFERRED_SIZE))
-                .addGroup(groupLayout.createSequentialGroup()
-                    .addGap(297)
-                    .addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE))
-                .addGroup(groupLayout.createSequentialGroup()
-                    .addGap(164)
-                    .addComponent(lblPulsaAquPara, GroupLayout.PREFERRED_SIZE, 276, GroupLayout.PREFERRED_SIZE))
+        	groupLayout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(groupLayout.createSequentialGroup()
+        			.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+        				.addGroup(groupLayout.createSequentialGroup()
+        					.addGap(42)
+        					.addComponent(lblEmail)
+        					.addGap(10)
+        					.addComponent(usernameField, GroupLayout.PREFERRED_SIZE, 302, GroupLayout.PREFERRED_SIZE))
+        				.addGroup(groupLayout.createSequentialGroup()
+        					.addGap(10)
+        					.addComponent(lblContrasenia)
+        					.addGap(4)
+        					.addComponent(passwordField_1, GroupLayout.PREFERRED_SIZE, 302, GroupLayout.PREFERRED_SIZE))
+        				.addGroup(groupLayout.createSequentialGroup()
+        					.addContainerGap()
+        					.addComponent(lblPulsaAquPara, GroupLayout.PREFERRED_SIZE, 235, GroupLayout.PREFERRED_SIZE)
+        					.addPreferredGap(ComponentPlacement.UNRELATED)
+        					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 185, GroupLayout.PREFERRED_SIZE)))
+        			.addContainerGap())
         );
         groupLayout.setVerticalGroup(
-            groupLayout.createParallelGroup(Alignment.LEADING)
-                .addGroup(groupLayout.createSequentialGroup()
-                    .addGap(45)
-                    .addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-                        .addComponent(lblUsuario)
-                        .addGroup(groupLayout.createSequentialGroup()
-                            .addGap(7)
-                            .addComponent(usernameField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-                    .addGap(6)
-                    .addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-                        .addComponent(lblContrasenia)
-                        .addGroup(groupLayout.createSequentialGroup()
-                            .addGap(7)
-                            .addComponent(passwordField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-                    .addGap(11)
-                    .addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
-                    .addGap(18)
-                    .addComponent(lblPulsaAquPara, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE))
+        	groupLayout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(groupLayout.createSequentialGroup()
+        			.addGap(45)
+        			.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+        				.addComponent(lblEmail)
+        				.addGroup(groupLayout.createSequentialGroup()
+        					.addGap(7)
+        					.addComponent(usernameField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+        			.addGap(6)
+        			.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+        				.addComponent(lblContrasenia)
+        				.addGroup(groupLayout.createSequentialGroup()
+        					.addGap(7)
+        					.addComponent(passwordField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+        			.addGap(11)
+        			.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(lblPulsaAquPara, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE))
+        			.addGap(57))
         );
         setLayout(groupLayout);
     }
@@ -137,10 +143,10 @@ public class LoginUsuario extends JPanel {
 
                 if (username.equals(inputUsername) && password.equals(inputPassword)) {
                     encontrado = true;
-                    if (partes_usuario[3].equals("Administrador")) {
-                        new AdminFrame(username).setVisible(true);
-                    } else if (partes_usuario[3].equals("Cliente")) {
-                        new UserFrame(username).setVisible(true);
+                    if (partes_usuario[3].equals("Jugador/a")) {
+                        new PlayerFrame(username).setVisible(true);
+                    } else if (partes_usuario[3].equals("Entrenador/a")) {
+                        new CoachFrame(username).setVisible(true);
                     } else {
                         JOptionPane.showMessageDialog(this, "Perfil desconocido");
                     }

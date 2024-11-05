@@ -7,9 +7,9 @@ import java.io.IOException;
 
 import javax.swing.JOptionPane;
 
-import swing.AdminFrame;
+import swing.PlayerFrame;
 import swing.Login;
-import swing.UserFrame;
+import swing.CoachFrame;
 
 public class mainApp {
 	
@@ -36,10 +36,10 @@ public class mainApp {
 	            if (sesionActiva) {
 	                sesionEncontrada = true; // Se encontró una sesión activa
 	                // Si la sesión está activa, abre el marco correspondiente
-	                if ("Administrador".equals(perfil)) {
-	                    new AdminFrame(username).setVisible(true);
-	                } else if ("Cliente".equals(perfil)) {
-	                    new UserFrame(username).setVisible(true);
+	                if ("Jugador/a".equals(perfil)) {
+	                    new PlayerFrame(username).setVisible(true);
+	                } else if ("Entrenador/a".equals(perfil)) {
+	                    new CoachFrame(username).setVisible(true);
 	                }
 	                break; // Salir del bucle si se encontró una sesión activa
 	            }

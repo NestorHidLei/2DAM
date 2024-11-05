@@ -14,4 +14,5 @@ Firma archivo JAR:
 	- jarsigner -keystore <almacen_claves.jks> -signedjar <archivo_firmado.jar> <archivo_original.jar> <mi_alias>
 
 Firmar .exe
-	- signtool.exe sign / f <certificado.pfx> /fd sha1 /p <contraseña> <archivoAFirmar.exe>
+	- signtool.exe sign /f <certificado.pfx> /fd sha1 /p <contraseña> <archivoAFirmar.exe>
+	- signtool.exe sign /f CertificadoNestor.pfx /fd sha1 /p 12345678 Login.exe

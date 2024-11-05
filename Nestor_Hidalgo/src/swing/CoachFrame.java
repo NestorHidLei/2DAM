@@ -3,16 +3,18 @@ package swing;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
-import swing.user.ReservarClase;
+import swing.entrenador.AniadirEquipos;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
-import java.awt.Font;
 import java.awt.GridLayout;
 import javax.swing.SwingConstants;
 import java.awt.event.MouseAdapter;
@@ -25,18 +27,19 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserFrame extends JFrame {
+public class CoachFrame extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private String currentUserEmail;
-
+	AniadirEquipos AniadirEquipos;
+	
 	 private static final String USUARIOS = "Usuarios.csv";
 
 	/**
 	 * Create the frame.
 	 */
-	public UserFrame(String email) {
+	public CoachFrame(String email) {
         this.currentUserEmail = email;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(500, 300, 900, 600);
@@ -50,57 +53,67 @@ public class UserFrame extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panelCabecera = new JPanel();
-		panelCabecera.setBackground(new Color(198, 242, 244));
+		panelCabecera.setBackground(new Color(0, 128, 192));
 		contentPane.add(panelCabecera, BorderLayout.NORTH);
 		
 		JLabel lblLogo = new JLabel("");
-		lblLogo.setIcon(new ImageIcon(UserFrame.class.getResource("/resources/logoApp.png")));
+		lblLogo.setIcon(new ImageIcon(CoachFrame.class.getResource("/resources/Logo.png")));
 		panelCabecera.add(lblLogo);
 		
-		JLabel lblTitulo = new JLabel("GYM Picasso");
-		lblTitulo.setForeground(new Color(0, 64, 128));
-		lblTitulo.setFont(new Font("Verdana", Font.BOLD, 30));
-		panelCabecera.add(lblTitulo);
+		JPanel panelIzquierda = new JPanel();
+		panelIzquierda.setBackground(new Color(0, 215, 232));
+		contentPane.add(panelIzquierda, BorderLayout.WEST);
+		panelIzquierda.setLayout(new GridLayout(0, 1, 100, 10));
 		
-		JPanel panelFotter = new JPanel();
-		panelFotter.setBackground(new Color(198, 242, 244));
-		contentPane.add(panelFotter, BorderLayout.SOUTH);
-		
-		JLabel lblFooter = new JLabel("Enrique Martínez Fernández 14/11/2023");
-		lblFooter.setFont(new Font("Verdana", Font.PLAIN, 14));
-		panelFotter.add(lblFooter);
-		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(CoachFrame.class.getResource("/resources/Home.png")));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		panelIzquierda.add(lblNewLabel);
 		JPanel panelCentral = new JPanel();
 		contentPane.add(panelCentral, BorderLayout.CENTER);
-		panelCentral.setLayout(new GridLayout(0, 2, 20, 20));
+		panelCentral.setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblReservarClase = new JLabel("Reservar clase", SwingConstants.CENTER);
-		lblReservarClase.addMouseListener(new MouseAdapter() {
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				ReservarClase reservas = new ReservarClase();
-				reservas.setVisible(true);   
+				JPanel panelEquipo = new JPanel();
+				panelCentral.add(panelEquipo);
+				panelEquipo.setPreferredSize(new Dimension(50,120));
+				panelEquipo.setLayout(new BorderLayout(0, 0));
+				AniadirEquipos = new AniadirEquipos(this);
+				JScrollPane scrollPane = new JScrollPane(AniadirEquipos);
+				panelEquipo.add(scrollPane);
 			}
 		});
-		lblReservarClase.setVerticalTextPosition(SwingConstants.BOTTOM);
-		lblReservarClase.setIcon(new ImageIcon(UserFrame.class.getResource("/resources/apuntaAClase.png")));
-		lblReservarClase.setHorizontalTextPosition(SwingConstants.CENTER);
-		panelCentral.add(lblReservarClase);
+		lblNewLabel_1.setIcon(new ImageIcon(CoachFrame.class.getResource("/resources/Equipo.png")));
+		panelIzquierda.add(lblNewLabel_1);
 		
-		JLabel lblCerrarSesion = new JLabel("Cierra sesión", SwingConstants.CENTER);
+		JLabel lblNewLabel_3 = new JLabel("");
+		lblNewLabel_3.setIcon(new ImageIcon(CoachFrame.class.getResource("/resources/Jugadores.png")));
+		panelIzquierda.add(lblNewLabel_3);
+		
+		JLabel lblCerrarSesion = new JLabel("");
 		lblCerrarSesion.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				actualizarSesion(false);
-				Login login = new Login();
-            	login.setVisible(true); 
-            	dispose();
+				// Marcar la sesión como inactiva
+				actualizarSesion(false); 
+                Login login = new Login();
+                login.setVisible(true);
+                // Cerrar CoachFrame
+                dispose(); 
+
 			}
 		});
-		lblCerrarSesion.setVerticalTextPosition(SwingConstants.BOTTOM);
-		lblCerrarSesion.setIcon(new ImageIcon(UserFrame.class.getResource("/resources/cierreSesion.png")));
-		lblCerrarSesion.setHorizontalTextPosition(SwingConstants.CENTER);
-		panelCentral.add(lblCerrarSesion);
+		lblCerrarSesion.setIcon(new ImageIcon(CoachFrame.class.getResource("/resources/Logout.png")));
+		panelIzquierda.add(lblCerrarSesion);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(0, 128, 192));
+		contentPane.add(panel, BorderLayout.SOUTH);
+		
+		
 	}
 	
 	// Método para actualizar el estado de sesión en el archivo CSV

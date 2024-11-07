@@ -33,12 +33,30 @@ public class PrimosEsclavaApp {
 		} catch (IOException e) {
 			System.err.println("Error al leer los datos");
 		}
+		
+		for (Integer primo : listaNumerosPrimos) {
+		    System.out.println(primo);
+		}
+
 	}
 	
+	/**
+	 * Metodo que dice si un numero es primo o no
+	 * @param numero - numero a verificar
+	 * @return
+	 */
 	private static boolean esPrimo(int numero) {
-		// Si el número es divisible entre uno o entre si mismo es primo
-		if (numero % 1 == 0 || numero % numero == 0) return true;
-		//En cualquier otro caso es false
-		return false;
+		//Si el numero es uno no es primo.
+	    if (numero <= 1) return false;
+		//Si el numero es dos es primo.
+	    if (numero == 2) return true;
+	    //Si el numero dividido dos es igual a cero, dicho numero no es primo.
+	    if (numero % 2 == 0) return false;
+	    //Va verificando cada dos numeros si es divisible.
+	    for (int i = 3; i <= Math.sqrt(numero); i += 2) {
+	        if (numero % i == 0) return false;
+	    }
+	    return true;
 	}
+
 }

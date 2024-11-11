@@ -16,7 +16,7 @@ public class PrimosEsclavaApp {
 		//Lista de numeros primos
 		List<Integer> listaNumerosPrimos = new ArrayList<Integer>();
 		
-		
+		//Cogemos la información necasario
 		try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
 			//Añade todos los números a la lista
 			for (int i = numeroInicial; i <= numeroFinal; i++) {
@@ -33,10 +33,7 @@ public class PrimosEsclavaApp {
 		} catch (IOException e) {
 			System.err.println("Error al leer los datos");
 		}
-		
-		for (Integer primo : listaNumerosPrimos) {
-		    System.out.println(primo);
-		}
+	    System.out.println(listaNumerosPrimos);
 
 	}
 	

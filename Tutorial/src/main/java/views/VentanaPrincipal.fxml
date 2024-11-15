@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity"
+	minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+	prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="controllers.VentanaPrincipalController">
+	<children>
+		<Label fx:id="lblTexto" layoutX="264.0" layoutY="143.0"
+			prefHeight="17.0" prefWidth="72.0" textAlignment="CENTER" />
+		<Button fx:id="btnPrueba" layoutX="235.0" layoutY="217.0"
+			mnemonicParsing="false" onAction="#btnPressed" prefHeight="41.0"
+			prefWidth="130.0" text="Pulsa Aqui" />
+	</children>
+</AnchorPane>

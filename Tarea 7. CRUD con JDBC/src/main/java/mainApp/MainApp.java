@@ -17,7 +17,7 @@ public class MainApp {
 //		testBorrar();
 	}
 
-	public static void testDaoAñadir() {
+	public static void testDaoAnadir() {
 		CityDao dao = CityDaoImpl.getInstance();
 
 		City city = new City("Ciudad Nueva 1", "ESP", "Andalusia", 1200);

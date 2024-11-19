@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import resources.*;
+
 public class altaProductos extends JPanel {
 
     private JTextField txtNombre;

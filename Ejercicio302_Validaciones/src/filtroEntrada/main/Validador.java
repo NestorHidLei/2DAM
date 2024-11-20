@@ -11,8 +11,8 @@ public class Validador {
 	 * Valida que el nombre y apellidos estén correctamente formateados (primera
 	 * letra mayúscula)
 	 * 
-	 * @param nombreApellidos
-	 * @return
+	 * @param nombreApellidos - El nombre y los apellidos del usuario
+	 * @return False - No pasa la validacion, True - Si la pasa
 	 */
 	public static boolean validarNombreApellidos(String nombreApellidos) {
 		if (nombreApellidos == null || nombreApellidos.isEmpty()) {
@@ -30,8 +30,8 @@ public class Validador {
 	/**
 	 * Valida que la fecha de nacimiento sea válida y anterior a la fecha actual
 	 * 
-	 * @param fechaNacimiento
-	 * @return
+	 * @param fechaNacimiento - fecha de nacimiento del usuario
+	 * @return False - No pasa la validacion, True - Si la pasa
 	 */
 	public static boolean validarFechaNacimiento(String fechaNacimiento) {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -48,7 +48,7 @@ public class Validador {
 	 * 9)
 	 * 
 	 * @param telefonoFijo
-	 * @return
+	 * @return False - No pasa la validacion, True - Si la pasa
 	 */
 	public static boolean validarTelefonoFijo(String telefonoFijo) {
 		if (telefonoFijo == null || telefonoFijo.isEmpty()) {
@@ -61,7 +61,7 @@ public class Validador {
 	 * Valida que el teléfono móvil esté en formato nacional o internacional
 	 * 
 	 * @param telefonoMovil
-	 * @return
+	 * @return False - No pasa la validacion, True - Si la pasa
 	 */
 	public static boolean validarTelefonoMovil(String telefonoMovil) {
 		return Pattern.matches("^(\\+34|0034|34)?[6-9]\\d{8}$", telefonoMovil);
@@ -71,7 +71,7 @@ public class Validador {
 	 * Valida que el número de hijos sea un número entero mayor o igual a cero
 	 * 
 	 * @param numeroHijos
-	 * @return
+	 * @return False - No pasa la validacion, True - Si la pasa
 	 */
 	public static boolean validarNumeroHijos(String numeroHijos) {
 		try {
@@ -83,18 +83,22 @@ public class Validador {
 	}
 
 	/**
-	 * Valida que la comunidad autónoma sea una de las tres opciones: "Andalucía","Extremadura", "Otra"
+	 * Valida que la comunidad autónoma sea una de las tres opciones:
+	 * "Andalucía","Extremadura", "Otra"
+	 * 
 	 * @param comunidad
-	 * @return
+	 * @return False - No pasa la validacion, True - Si la pasa
 	 */
 	public static boolean validarComunidadAutonoma(String comunidad) {
 		return comunidad.equals("Andalucia") || comunidad.equals("Extremadura") || comunidad.equals("Otra");
 	}
 
 	/**
-	 * Valida que la localidad tenga entre 1 y 50 caracteres y que la primera letra esté en mayúscula
+	 * Valida que la localidad tenga entre 1 y 50 caracteres y que la primera letra
+	 * esté en mayúscula
+	 * 
 	 * @param localidad
-	 * @return
+	 * @return False - No pasa la validacion, True - Si la pasa
 	 */
 	public static boolean validarLocalidad(String localidad) {
 		if (localidad == null || localidad.length() < 1 || localidad.length() > 50) {
@@ -104,9 +108,11 @@ public class Validador {
 	}
 
 	/**
-	 * Valida que los intereses sean entre 1 y 5 elementos separados por comas y no repetidos
+	 * Valida que los intereses sean entre 1 y 5 elementos separados por comas y no
+	 * repetidos
+	 * 
 	 * @param intereses
-	 * @return
+	 * @return False - No pasa la validacion, True - Si la pasa
 	 */
 	public static boolean validarIntereses(String intereses) {
 		String[] listaIntereses = intereses.split(",");

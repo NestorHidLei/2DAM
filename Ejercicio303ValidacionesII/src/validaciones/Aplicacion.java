@@ -17,13 +17,10 @@ public class Aplicacion extends Validador{
                 new InputStreamReader(new FileInputStream(args[0]), "UTF-8"))) {
             String linea;
             int lineaNumero = 0;
-
-            // Expresión regular para dividir por comas pero respetar comillas dobles
-            Pattern regexSplit = Pattern.compile(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
             
             while ((linea = rd.readLine()) != null) {
                 lineaNumero++;
-                String[] campos = regexSplit.split(linea);
+                String[] campos = linea.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
 
                 if (campos.length != 10) {
                     System.out.println("Error en la línea " + lineaNumero + ": número de campos incorrecto.");

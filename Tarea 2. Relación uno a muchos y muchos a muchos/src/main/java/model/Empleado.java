@@ -1,11 +1,15 @@
 package model;
 
 import java.sql.Date;
+import java.util.HashSet;
+import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Empleado {
@@ -15,6 +19,8 @@ public class Empleado {
     private String nombre;
     private String domicilio;
     private Date fechaNacimiento;
+    
+    
     
     /**
      * Constructor de empleado

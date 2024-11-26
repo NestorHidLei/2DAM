@@ -15,7 +15,7 @@ public class Existencias {
     private String nombre;
     private Integer cantidad;
     private BigDecimal precio;
-
+    
     @ManyToOne
     @JoinColumn(name = "cod_rest")
     private Restaurante restaurante;

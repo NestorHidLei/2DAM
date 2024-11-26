@@ -2,6 +2,7 @@ package model;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
@@ -14,7 +15,7 @@ public class Titular {
     private String nombre;
     private String domicilio;
 
-    @OneToMany(mappedBy = "titular")
+    @OneToMany(mappedBy = "titular", cascade= CascadeType.ALL)
     private List<Restaurante> restaurante;
 
     

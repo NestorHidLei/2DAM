@@ -12,7 +12,7 @@ public class Localidad {
 
     private String nombre;
 
-    @OneToMany(mappedBy = "localidad")
+    @OneToMany(mappedBy = "localidad", cascade= CascadeType.ALL)
     private List<Restaurante> restaurante;
     
     public Integer getCodLocalidad() {

@@ -18,7 +18,9 @@ import javax.swing.SwingConstants;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.border.EmptyBorder;
 
+import swing.cliente.ListaReparaciones;
 import swing.empleado.Reparacion;
+import utils.Citas;
 import utils.Usuario;
 
 public class Empleado extends JFrame {
@@ -30,8 +32,9 @@ public class Empleado extends JFrame {
 	 * Create the frame.
 	 * @param usuarios 
 	 * @param email 
+	 * @param citas 
 	 */
-	public Empleado(List<Usuario> usuarios, String email) {
+	public Empleado(List<Usuario> usuarios, String email, List<Citas> citas) {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 464);
 		contentPane = new JPanel();
@@ -98,7 +101,7 @@ public class Empleado extends JFrame {
 		lblEstado.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Reparacion reparacion = new Reparacion();
+				Reparacion reparacion = new Reparacion(citas);
 				reparacion.setVisible(true);
 				
 			}
@@ -110,6 +113,13 @@ public class Empleado extends JFrame {
 		panelCentral2.add(lblEstado);
 		
 		JLabel lblReparacion = new JLabel("Ver mis reparaciones");
+		lblReparacion.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ListaReparaciones lstReparaciones = new ListaReparaciones(citas);
+				lstReparaciones.setVisible(true);
+			}
+		});
 		lblReparacion.setHorizontalAlignment(SwingConstants.CENTER);
 		lblReparacion.setIcon(new ImageIcon(Empleado.class.getResource("/resources/listadoReparaciones.png")));
 		lblReparacion.setHorizontalTextPosition(JLabel.CENTER);

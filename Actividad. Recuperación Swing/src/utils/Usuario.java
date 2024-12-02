@@ -1,8 +1,7 @@
 package utils;
 
-import java.text.SimpleDateFormat;
 import java.util.Arrays;
-import java.util.Date;
+
 
 public class Usuario {
 	
@@ -12,15 +11,17 @@ public class Usuario {
 	private String email;
 	private String contacto;
 	private char[] contrasenia;
+	private boolean isClient;
 	
 	public Usuario(String nombre, String apellidos, int telefono, String contacto, String email,
-			char[] contrasenia) {
+			char[] contrasenia, boolean isClient) {
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.telefono = telefono;
 		this.contacto = contacto;
 		this.email = email;
 		this.contrasenia = contrasenia;
+		this.isClient = isClient;
 	}
 
 	public String getNombre() {
@@ -45,6 +46,10 @@ public class Usuario {
 
 	public char[] getContrasenia() {
 		return contrasenia;
+	}
+
+	public boolean isClient() {
+		return isClient;
 	}
 
 	@Override

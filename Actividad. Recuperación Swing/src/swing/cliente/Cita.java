@@ -19,6 +19,7 @@ import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 
@@ -66,7 +67,7 @@ public class Cita extends JFrame {
 					JOptionPane.showInputDialog("Error: Ya hay dos citas para ese dia",
 							JOptionPane.ERROR_MESSAGE);
 				} else {
-					citas.add(new Citas(textMatricula.getText(), textMarca.getText(), textModelo.getText(), dateChooser.getDate()));
+					citas.add(new Citas(textMatricula.getText(), textMarca.getText(), textModelo.getText(), dateChooser.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), "Pendiente", 0.0, ""));
 					dispose();
 				}
 			}

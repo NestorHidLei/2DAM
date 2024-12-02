@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 
 import java.awt.Font;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.GridLayout;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
@@ -20,10 +21,10 @@ import javax.swing.ButtonGroup;
 import javax.swing.ButtonModel;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.Arrays;
 import java.util.List;
-import java.awt.event.ActionEvent;
 
 public class Registro extends JFrame {
 
@@ -83,15 +84,39 @@ public class Registro extends JFrame {
 		panel.add(panelAbajo, BorderLayout.SOUTH);
 
 		JButton btnNewButton = new JButton("Registrar");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
 				registrarUser(usuarios);
-				
 			}
+			@Override
+            public void mouseEntered(MouseEvent e) {
+				btnNewButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+            	btnNewButton.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+            }
 		});
 		panelAbajo.add(btnNewButton);
 
 		JButton btnNewButton_1 = new JButton("Cancelar");
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+            public void mouseEntered(MouseEvent e) {
+				btnNewButton_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+            	btnNewButton_1.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+            }
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				dispose();
+			}
+		});
 		panelAbajo.add(btnNewButton_1);
 
 		JPanel panelCentro = new JPanel();
@@ -183,7 +208,7 @@ public class Registro extends JFrame {
 					JOptionPane.ERROR_MESSAGE);
 		}
 		if (emailCorrecto(email, usuarios)) {
-			Usuario usuario = new Usuario(nombre, apellidos, telefono, ocpion,  email, contrasenia);
+			Usuario usuario = new Usuario(nombre, apellidos, telefono, ocpion,  email, contrasenia, true);
 			usuarios.add(usuario);
 			JOptionPane.showMessageDialog(this, "Usuario Registrado con éxito");
 		} else {

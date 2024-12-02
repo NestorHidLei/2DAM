@@ -1,6 +1,5 @@
 package swing;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JFrame;
@@ -8,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import swing.cliente.Cita;
+import swing.cliente.ListaReparaciones;
 import utils.Citas;
 import utils.Usuario;
 import java.awt.BorderLayout;
@@ -26,14 +26,14 @@ public class Cliente extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private List<Citas> citas = new ArrayList<>();
 
 	/**
 	 * Create the frame.
 	 * @param usuarios 
 	 * @param email 
+	 * @param citas 
 	 */
-	public Cliente(List<Usuario> usuarios, String email) {
+	public Cliente(List<Usuario> usuarios, String email, List<Citas> citas) {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 464);
 		contentPane = new JPanel();
@@ -112,6 +112,13 @@ public class Cliente extends JFrame {
 		panelCentral2.add(lblCita);
 		
 		JLabel lblReparacion = new JLabel("Ver mis reparaciones");
+		lblReparacion.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ListaReparaciones lstReparaciones = new ListaReparaciones(citas);
+				lstReparaciones.setVisible(true);
+			}
+		});
 		lblReparacion.setHorizontalAlignment(SwingConstants.CENTER);
 		lblReparacion.setIcon(new ImageIcon(Cliente.class.getResource("/resources/reparaciones.png")));
 		lblReparacion.setHorizontalTextPosition(JLabel.CENTER);

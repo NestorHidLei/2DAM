@@ -20,30 +20,30 @@ public class TestAcondicionadorApp {
     if (!assertIgual(Acondicionador.acondicionaAtributoHtml("H<ola> Ca&ra\"co'la"), "H&lt;ola> Ca&amp;ra&#34;co&#39;la", "acondicionaAtributoHtml")) {
       errores++;
     }
-//    
-//    if (!assertIgual(Acondicionador.acondicionaContenidoCss("Hola Caracola"), "Hola Caracola", "acondicionaContenidoCss")) {
-//      errores++;
-//    }
-//    
-//    if (!assertIgual(Acondicionador.acondicionaContenidoCss("\"1 h ' o \\ l < a & C (a )r /1 ola"), "\\22 1 h \\27 o \\5c l \\3c a \\26 C \\28 a \\29r \\2f 1 ola", "acondicionaContenidoCss")) {
-//      errores++;
-//    }
-//    
-//    if (!assertIgual(Acondicionador.acondicionaUrl("Hola Caracola"), "Hola%20Caracola", "acondicionaUrl")) {
-//      errores++;
-//    }
-//    
-//    if (!assertIgual(Acondicionador.acondicionaUrl("@\\/ Ω"), "@%5C%2F%20%CE%A9", "acondicionaUrl")) {
-//      errores++;
-//    }
-//    
-//    if (!assertIgual(Acondicionador.acondicionaLiteralSql("Hola Caracola"), "Hola Caracola", "acondicionaLiteralSql")) {
-//      errores++;
-//    }
-//    
-//    if (!assertIgual(Acondicionador.acondicionaLiteralSql("H\"'\\%_ ola"), "H\\\"\\'\\\\\\%\\_ ola", "acondicionaLiteralSql")) {
-//      errores++;
-//    }
+    
+    if (!assertIgual(Acondicionador.acondicionaContenidoCss("Hola Caracola"), "Hola Caracola", "acondicionaContenidoCss")) {
+      errores++;
+    }
+    
+    if (!assertIgual(Acondicionador.acondicionaContenidoCss("\"1 h ' o \\ l < a & C (a )r /1 ola"), "\\22 1 h \\27 o \\5c l \\3c a \\26 C \\28a \\29r \\2f 1 ola", "acondicionaContenidoCss")) {
+      errores++;
+    }
+    
+    if (!assertIgual(Acondicionador.acondicionaUrl("Hola Caracola"), "Hola%20Caracola", "acondicionaUrl")) {
+      errores++;
+    }
+    
+    if (!assertIgual(Acondicionador.acondicionaUrl("@\\/ Ω"), "@%5C%2F%20%CE%A9", "acondicionaUrl")) {
+      errores++;
+    }
+    
+    if (!assertIgual(Acondicionador.acondicionaLiteralSql("Hola Caracola"), "Hola Caracola", "acondicionaLiteralSql")) {
+      errores++;
+    }
+    
+    if (!assertIgual(Acondicionador.acondicionaLiteralSql("H\"'\\%_ ola"), "H\\\"\\'\\\\\\%\\_ ola", "acondicionaLiteralSql")) {
+      errores++;
+    }
     
     if (errores == 0) {
       System.out.println("No se produjeron errores");

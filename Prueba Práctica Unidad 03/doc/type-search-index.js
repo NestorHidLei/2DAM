@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"hlc.ud03.examen.datos","l":"BloqueDatos"},{"p":"hlc.ud03.examen.datos","l":"BloqueDatosApp"},{"p":"hlc.ud03.examen.datos","l":"BloqueDatosEnFichero"},{"p":"hlc.ud03.examen.datos","l":"BloqueDatosException"}];updateSearchResults();

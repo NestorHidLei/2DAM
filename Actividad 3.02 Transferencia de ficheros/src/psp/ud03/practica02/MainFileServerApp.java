@@ -21,7 +21,7 @@ public class MainFileServerApp {
 			}
 		}
 		
-		//intenta iniciar el servidor en el puerto seleccionado
+		//intenta iniciar el servidor TCP en el puerto seleccionado
 		try (ServerSocket serverSocket = new ServerSocket(puerto)){
             System.out.println("Servidor iniciado en el puerto: " + puerto);
             
@@ -30,7 +30,7 @@ public class MainFileServerApp {
             	Socket clientSocket = serverSocket.accept();
                 System.out.println("Cliente conectado desde: " + clientSocket.getInetAddress().getHostAddress());
                
-                new Thread(new ClientHandler(clientSocket)).start();
+                new ClientHandler(clientSocket).start();
             }
             
 		} catch (IOException e) {

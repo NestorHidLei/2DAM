@@ -43,14 +43,14 @@ public class HomeControlador {
     private void mostrarJuegos(List<String[]> juegos, HBox contenedor) {
         contenedor.getChildren().clear();
         for (String[] juego : juegos) {
-            VBox juegoBox = new VBox(6);
+            VBox juegoBox = new VBox(10);
             juegoBox.setStyle("-fx-alignment: center;");
 
             ImageView portada = new ImageView();
             portada.setFitWidth(150);
             portada.setFitHeight(200);
             portada.setPreserveRatio(true);
-            portada.setImage(new Image(juego[2])); 
+            portada.setImage(new Image(juego[2])); // URL de la imagen.
 
             Label nombre = new Label(juego[1]);
             nombre.setStyle("-fx-text-fill: white; -fx-font-size: 14px;");

@@ -53,7 +53,7 @@
         </ScrollPane>
 
         <!-- Imagen central -->
-        <ImageView fitHeight="227.0" fitWidth="254.0" layoutX="881.0" layoutY="201.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="193.0" fitWidth="228.0" layoutX="865.0" layoutY="205.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../images/persona1.png" />
             </image>

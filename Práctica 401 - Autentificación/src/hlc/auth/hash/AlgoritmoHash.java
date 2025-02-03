@@ -1,8 +1,5 @@
 package hlc.auth.hash;
 
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-
 /**
  * Algoritmo de hashing HMAC
  * @author mmontoro

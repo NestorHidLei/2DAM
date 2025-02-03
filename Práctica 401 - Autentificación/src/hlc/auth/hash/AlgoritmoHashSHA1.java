@@ -1,7 +1,5 @@
 package hlc.auth.hash;
 
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 
@@ -20,7 +18,7 @@ public class AlgoritmoHashSHA1 implements AlgoritmoHash {
     try {
       // Obtenemos el objeto SecretKey a partir de la clave
       SecretKeySpec claveAlg = new SecretKeySpec(clave, ALGORITMO);
-      // Obtenemos la instancia del algoritom
+      // Obtenemos la instancia del algoritmo
       Mac mac = Mac.getInstance(ALGORITMO);
       // Se inicializa con la clave
       mac.init(claveAlg);

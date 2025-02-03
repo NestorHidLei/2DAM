@@ -9,10 +9,6 @@ import hlc.auth.hash.AlgoritmoHashSHA1;
  * @author mmontoro
  *
  */
-/**
- * @author mmontoro
- *
- */
 public class GeneradorHOTP {
 
   // Algoritmo Hash a usar
@@ -63,7 +59,7 @@ public class GeneradorHOTP {
       return getDigitosDesdeHash(hash);
     } catch (Exception e) {
       // Si hay excepción la sustituye por la nuestra
-      throw new GeneradorException("Error generando el dódigo. Ver excepción", e);
+      throw new GeneradorException("Error generando el código. Ver excepción", e);
     }
   }
 

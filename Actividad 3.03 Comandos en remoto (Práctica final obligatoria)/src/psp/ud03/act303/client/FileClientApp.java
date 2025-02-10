@@ -8,8 +8,10 @@ import java.net.Socket;
 import java.util.Scanner;
 
 public class FileClientApp {
-
-    private static final String DEFAULT_HOST = "192.168.1.234";
+	
+	//Atributos
+	private static final String SERVIDOR_PEDRO = "192.168.1.234";
+    private static final String DEFAULT_HOST = "localhost";
     private static final int DEFAULT_PORT = 2121;
     private static final String OK = "OK";
     private static final String KO = "KO";
@@ -113,6 +115,7 @@ public class FileClientApp {
      */
     private static void processShowResponse(BufferedReader in) throws IOException {
         int numLines = Integer.parseInt(in.readLine());
+        System.out.println(numLines);
         for (int i = 0; i < numLines; i++) {
             System.out.println(in.readLine());
         }
